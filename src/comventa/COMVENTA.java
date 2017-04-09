@@ -5,6 +5,10 @@
  */
 package comventa;
 
+import SQL.BD_Conexion;
+import Vista.ArticulosView;
+import java.sql.Connection;
+
 /**
  *
  * @author Javicuc
@@ -15,7 +19,13 @@ public class COMVENTA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Connection con = BD_Conexion.getInstance();
+        ArticulosView accv = new ArticulosView();
+        if(con != null){
+            System.out.println("Driver Encontrado");
+            accv.setVisible(true);
+        }
     }
     
 }
