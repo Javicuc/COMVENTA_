@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.InterfaceDAO.iProveedorDAO;
 import Modelo.Proveedor;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,12 @@ import java.util.List;
  * @author Javicuc
  */
 public class ProveedorDAO implements iProveedorDAO{
+
+    private Connection con;
+    
+    public ProveedorDAO(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public boolean crear(Proveedor obj) throws SQLException {

@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.Categoria;
 import Modelo.InterfaceDAO.iCategoriaDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,6 +17,12 @@ import java.util.List;
  */
 public class CategoriaDAO implements iCategoriaDAO{
 
+    private Connection con;
+    
+    public CategoriaDAO(Connection con){
+        this.con = con;
+    }
+    
     @Override
     public boolean crear(Categoria obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

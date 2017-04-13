@@ -7,7 +7,7 @@ package Modelo.DAO;
 
 import Modelo.Acceso;
 import Modelo.InterfaceDAO.iAccesoDAO;
-import Modelo.InterfaceDAO.iArticuloDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,6 +18,12 @@ import java.util.List;
  */
 public class AccesoDAO implements iAccesoDAO{
 
+    private Connection con;
+    
+    public AccesoDAO(Connection con){
+        this.con = con;
+    }
+    
     @Override
     public boolean crear(Acceso obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

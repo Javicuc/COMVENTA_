@@ -10,7 +10,7 @@ package SQL;
  * @author Javicuc
  */
 public class Tablas {
-    interface Tabla {
+    public interface Tabla {
         String ACCESO          = "acceso";
         String ARTICULO        = "articulo";
         String CATEGORIA       = "categoria_articulo";
@@ -25,37 +25,75 @@ public class Tablas {
     }
      
     interface ColumnasAcceso{
-        
+        String ID_EMPLEADO = "ID_Empleado";
+        String USUARIO     = "Usuario";
+        String CLAVE       = "Clave";
     }
     interface ColumnasArticulo{
-        
+        String ID_ARTICULO  = "ID_Articulo";
+        String NOMBRE       = "Nombre";
+        String DESCRIPCION  = "Descripcion";
+        String COSTO        = "Costo";
+        String CADUCIDAD    = "Caducidad";
+        String CODIGO       = "Codigo";
+        String FK_CATEGORIA = "FK_Categoria";
     }
     interface ColumnasCategoria{
-        
+        String ID_CATEGORIA = "ID_Categoria";
+        String NOMBRE       = "Nombre";
     }
     interface ColumnasCliente{
-        
+        String ID_CLIENTE = "ID_Cliente";
+        String NOMBRE     = "Nombre";
+        String APELLIDOS  = "Apellidos";
+        String TELEFONO   = "Telefono";
+        String DIRECCION  = "Direccion";
+        String CIUDAD     = "Ciudad_Actual";
     }
     interface ColumnasCompra{
-        
+        String ID_COMPRA = "ID_Compra";
+        String FECHA     = "Fecha";
     }
     interface ColumnasDetalleCompra{
-        
+        String FK_COMPRA   = "FK_Compra";
+        String FK_ARTICULO = "FK_Articulo";
+        String NOARTICULO  = "NoArticulo";
+        String CANTIDAD    = "Cantidad";
+        String IMPORTE     = "Importe";
+        String FK_EMPLEADO = "FK_Empleado";
+        String FK_CLIENTE  = "FK_Cliente";
     }
     interface ColumnasDetallePedido{
-        
+        String FK_PEDIDO    = "FK_Pedido";
+        String FK_ARTICULO  = "FK_Articulo";
+        String CANTIDAD     = "Cantidad";
+        String COSTO        = "Costo";
+        String FK_CATEGORIA = "FK_Categoria";
     }
     interface ColumnasEmpleado{
-        
+        String ID_EMPLEADO = "ID_Empleado";
+        String NOMBRE      = "Nombre";
+        String APELLIDOS   = "Apellidos";
+        String SEXO        = "Sexo";
+        String TELEFONO    = "Telefono";
     }
     interface ColumnasJornadasTrabajo{
-        
+        String ID_REGISTRO = "ID_Registro";
+        String FK_EMPLEADO = "FK_Empleado";
+        String ENTRADA     = "Entrada";
+        String SALIDA      = "Salida";
     }
     interface ColumnasPedido{
-        
+        String ID_PEDIDO = "ID_Pedido";
+        String CANTIDAD  = "Cantidad";
+        String FECHA     = "Fecha";
+        String FK_PROVEEDOR = "FK_Proveedor";
     }
     interface ColumnasProveedor{
-        
+        String ID_PROVEEDOR = "ID_Proveedor";
+        String NOMBRE       = "Nombre";
+        String DIRECCION    = "Direccion";
+        String TELEFONO     = "Telefono";
     }
     
     public static class COLACCESO implements ColumnasAcceso{
@@ -91,17 +129,5 @@ public class Tablas {
     public static class COLPROVEEDOR implements ColumnasProveedor{
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

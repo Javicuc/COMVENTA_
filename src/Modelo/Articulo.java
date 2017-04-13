@@ -19,27 +19,29 @@ public class Articulo {
     private String Descripcion;
     private double Costo;
     private Date Caducidad;
+    private String Codigo;
     private int FK_Categoria;
 
-    public Articulo(int id, String nombre, String descripcion, double costo, Date caducidad, int fk_categoria) {
+    public Articulo(int id, String nombre, String descripcion, double costo, Date caducidad, String codigo, int fk_categoria) {
         this.ID_Articulo  = id;
         this.Nombre       = nombre;
         this.Descripcion  = descripcion;
         this.Costo        = costo;
         this.Caducidad    = caducidad;
+        this.Codigo       = codigo;
         this.FK_Categoria = fk_categoria;
     }
 
-    public Articulo(String nombre, String descripcion, double costo, Date caducidad, int fk_categoria) {
+    public Articulo(String nombre, String descripcion, double costo, Date caducidad, String codigo, int fk_categoria) {
         this.Nombre       = nombre;
         this.Descripcion  = descripcion;
         this.Costo        = costo;
         this.Caducidad    = caducidad;
+        this.Codigo       = codigo;
         this.FK_Categoria = fk_categoria;
     }
 
-    public Articulo() {
-       
+    public Articulo() {  
     }
 
     @Override
@@ -158,6 +160,20 @@ public class Articulo {
      */
     public void setFK_Categoria(int FK_Categoria) {
         this.FK_Categoria = FK_Categoria;
+    }
+
+    /**
+     * @return the Codigo
+     */
+    public String getCodigo() {
+        return Codigo;
+    }
+
+    /**
+     * @param Codigo the Codigo to set
+     */
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
     }
     
 }

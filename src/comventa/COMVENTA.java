@@ -5,10 +5,15 @@
  */
 package comventa;
 
-import SQL.BD_Conexion;
-import Vista.ArticulosView;
-import java.sql.Connection;
-
+import Modelo.Articulo;
+import Modelo.DAO.DAOManager;
+import Vista.ArticuloView;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+        
 /**
  *
  * @author Javicuc
@@ -19,13 +24,19 @@ public class COMVENTA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
+        Articulo objID = new Articulo(12,"Doritos Diablo", "Frituras", 8.50,Date.valueOf(LocalDate.now()), "AR-1234567890", 1);
+        Articulo objNI = new Articulo("Chetos", "Frituras", 8.50,Date.valueOf(LocalDate.now()), "AR-1234567890", 1);
+        Articulo objDI = new Articulo(8,"Chetos", "Frituras", 8.50,Date.valueOf(LocalDate.now()), "AR-1234567890", 1);
+        */
         
-        Connection con = BD_Conexion.getInstance();
-        ArticulosView accv = new ArticulosView();
-        if(con != null){
-            System.out.println("Driver Encontrado");
-            accv.setVisible(true);
+        ArticuloView accv = null;
+        try {
+            accv = new ArticuloView();
+        } catch (SQLException ex) {
+            Logger.getLogger(COMVENTA.class.getName()).log(Level.SEVERE, null, ex);
         }
+        accv.setVisible(true);
     }
     
 }

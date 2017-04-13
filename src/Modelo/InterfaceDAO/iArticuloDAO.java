@@ -20,7 +20,7 @@ public interface iArticuloDAO {
 
     public List<Articulo> readAllForInput(String searchValue) throws SQLException;
 
-    public Articulo raadByID(String primaryKey) throws SQLException;
+    public Articulo raadByID(int primaryKey) throws SQLException;
 
     public boolean update(Articulo obj) throws SQLException;
 

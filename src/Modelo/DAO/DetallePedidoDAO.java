@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.DetallePedido;
 import Modelo.InterfaceDAO.iDetallePedidoDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,12 @@ import java.util.List;
  * @author Javicuc
  */
 public class DetallePedidoDAO implements iDetallePedidoDAO{
+
+    private Connection con;
+    
+    public DetallePedidoDAO(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public boolean crear(DetallePedido obj) throws SQLException {

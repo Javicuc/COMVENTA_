@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.Empleado;
 import Modelo.InterfaceDAO.iEmpleadoDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,12 @@ import java.util.List;
  * @author Javicuc
  */
 public class EmpleadoDAO implements iEmpleadoDAO{
+
+    private Connection con;
+    
+    public EmpleadoDAO(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public boolean crear(Empleado obj) throws SQLException {

@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.Compra;
 import Modelo.InterfaceDAO.iCompraDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,6 +17,12 @@ import java.util.List;
  */
 public class CompraDAO implements iCompraDAO{
 
+    private Connection con;
+
+    public CompraDAO(Connection con) {
+        this.con = con;
+    }
+    
     @Override
     public boolean crear(Compra obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

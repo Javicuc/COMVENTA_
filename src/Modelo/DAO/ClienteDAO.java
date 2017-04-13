@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.Cliente;
 import Modelo.InterfaceDAO.iClienteDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,12 @@ import java.util.List;
  * @author Javicuc
  */
 public class ClienteDAO implements iClienteDAO{
+
+    private Connection con;
+    
+    public ClienteDAO(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public boolean crear(Cliente obj) throws SQLException {

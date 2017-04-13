@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Modelo.InterfaceDAO.iJornadasTrabajoDAO;
 import Modelo.JornadasTrabajo;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,12 @@ import java.util.List;
  * @author Javicuc
  */
 public class JornadasTrabajoDAO implements iJornadasTrabajoDAO{
+
+    private Connection con;
+    
+    public JornadasTrabajoDAO(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public boolean crear(JornadasTrabajo obj) throws SQLException {
