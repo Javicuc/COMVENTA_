@@ -21,15 +21,15 @@ public interface iJornadasTrabajoDAO {
 
     public List<JornadasTrabajo> readAllForInput(String searchValue) throws SQLException;
 
-    public JornadasTrabajo raadByID(String primaryKey) throws SQLException;
+    public JornadasTrabajo raadByID(int primaryKey) throws SQLException;
 
     public boolean update(JornadasTrabajo obj) throws SQLException;
 
     public boolean delete(JornadasTrabajo obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(JornadasTrabajo obj) throws SQLException;
 }

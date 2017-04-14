@@ -9,12 +9,12 @@ package Vista;
  *
  * @author Javicuc
  */
-public class AccesoView extends javax.swing.JFrame {
+public class ProveedoresView extends javax.swing.JFrame {
 
     /**
-     * Creates new form AccesoView
+     * Creates new form ProveedoresView
      */
-    public AccesoView() {
+    public ProveedoresView() {
         initComponents();
     }
 
@@ -33,17 +33,17 @@ public class AccesoView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 151, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

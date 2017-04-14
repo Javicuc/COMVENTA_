@@ -20,15 +20,15 @@ public interface iEmpleadoDAO {
 
     public List<Empleado> readAllForInput(String searchValue) throws SQLException;
 
-    public Empleado raadByID(String primaryKey) throws SQLException;
+    public Empleado raadByID(int primaryKey) throws SQLException;
 
     public boolean update(Empleado obj) throws SQLException;
 
     public boolean delete(Empleado obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(Empleado obj) throws SQLException; 
 }

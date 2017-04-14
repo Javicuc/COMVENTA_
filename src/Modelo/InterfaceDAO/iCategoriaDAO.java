@@ -20,15 +20,15 @@ public interface iCategoriaDAO {
 
     public List<Categoria> readAllForInput(String searchValue) throws SQLException;
 
-    public Categoria raadByID(String primaryKey) throws SQLException;
+    public Categoria raadByID(int primaryKey) throws SQLException;
 
     public boolean update(Categoria obj) throws SQLException;
 
     public boolean delete(Categoria obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(Categoria obj) throws SQLException;
 }

@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +28,10 @@ public class ArticuloDAO implements iArticuloDAO{
     
     final String INSERT = "INSERT INTO " + Tabla.ARTICULO + "("+COLARTICULO.NOMBRE + ","+ COLARTICULO.DESCRIPCION 
                            + "," + COLARTICULO.COSTO + "," + COLARTICULO.CADUCIDAD + "," + COLARTICULO.CODIGO + ","
-                           + COLARTICULO.FK_CATEGORIA + ")" + " VALUES(?,?,?,?,?,?)";
+                           + COLARTICULO.FK_CATEGORIA + "," + COLARTICULO.FK_PROVEEDOR + ")" + " VALUES(?,?,?,?,?,?,?)";
     final String UPDATE = "UPDATE " + Tabla.ARTICULO + " SET " + COLARTICULO.NOMBRE + " = ?," + COLARTICULO.DESCRIPCION
                            + " = ?," + COLARTICULO.COSTO + " = ?," + COLARTICULO.CADUCIDAD + " = ?," + COLARTICULO.CODIGO
-                           + " = ?," + COLARTICULO.FK_CATEGORIA + " = ? WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
+                           + " = ?," + COLARTICULO.FK_CATEGORIA + " = ?," + COLARTICULO.FK_PROVEEDOR + " = ? WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
     final String GETALL = "SELECT * FROM " + Tabla.ARTICULO + " ORDER BY " + COLARTICULO.NOMBRE;
     final String GETONE = "SELECT * FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
     final String DELETE = "DELETE FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
@@ -54,6 +53,7 @@ public class ArticuloDAO implements iArticuloDAO{
             ps.setDate(4, obj.getCaducidad());
             ps.setString(5, obj.getCodigo());
             ps.setInt(6, obj.getFK_Categoria());
+            ps.setInt(7, obj.getFK_Proveedor());
             ps.executeUpdate();
             insertar = true;
         } catch (SQLException e) {
@@ -152,8 +152,9 @@ public class ArticuloDAO implements iArticuloDAO{
             ps.setDate(4, obj.getCaducidad());
             ps.setString(5, obj.getCodigo());
             ps.setInt(6, obj.getFK_Categoria());
-            ps.setInt(7, obj.getID_Articulo());
-            if(ps.executeUpdate()!= 0)
+            ps.setInt(7, obj.getFK_Proveedor());
+            ps.setInt(8, obj.getID_Articulo());
+            if(ps.executeUpdate() != 0)
                 actualizar = true;
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -193,12 +194,12 @@ public class ArticuloDAO implements iArticuloDAO{
     }
 
     @Override
-    public boolean deleteByID(String ID) throws SQLException {
+    public boolean deleteByID(int primaryKey) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean alreadyExisting(String primaryKey) throws SQLException {
+    public boolean alreadyExisting(int primaryKey) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -217,7 +218,8 @@ public class ArticuloDAO implements iArticuloDAO{
             Date   cadud  = rs.getDate(COLARTICULO.CADUCIDAD);
             String codigo = rs.getString(COLARTICULO.CODIGO);
             int    fk_cat = rs.getInt(COLARTICULO.FK_CATEGORIA);
-            articulo = new Articulo(id, nombre, desc, costo, cadud, codigo, fk_cat);
+            int    fk_pro = rs.getInt(COLARTICULO.FK_PROVEEDOR);
+            articulo = new Articulo(id, nombre, desc, costo, cadud, codigo, fk_cat, fk_pro);
         } catch (SQLException ex) {
             Logger.getLogger(ArticuloDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -37,6 +37,7 @@ public class ArticuloTableModel extends AbstractTableModel{
             case 4: return COLARTICULO.CADUCIDAD;
             case 5: return COLARTICULO.CODIGO;
             case 6: return COLARTICULO.FK_CATEGORIA;
+            case 7: return COLARTICULO.FK_PROVEEDOR;
             default: return "";
         }
     }
@@ -54,7 +55,7 @@ public class ArticuloTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 7; // Se puede calcular de otra forma, de momento lo dejaremos así
+        return 8; // Se puede calcular de otra forma, de momento lo dejaremos así
     }
 
     @Override
@@ -70,6 +71,7 @@ public class ArticuloTableModel extends AbstractTableModel{
                 return df.format(getDataArticulo.getCaducidad()); // formatearlo para que sea entendible (DIA/MES/AÑO)
             case 5: return getDataArticulo.getCodigo();
             case 6: return getDataArticulo.getFK_Categoria();
+            case 7: return getDataArticulo.getFK_Proveedor();
             default: return "";
         }
     }

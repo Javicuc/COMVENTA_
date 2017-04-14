@@ -21,8 +21,9 @@ public class Articulo {
     private Date Caducidad;
     private String Codigo;
     private int FK_Categoria;
+    private int FK_Proveedor;
 
-    public Articulo(int id, String nombre, String descripcion, double costo, Date caducidad, String codigo, int fk_categoria) {
+    public Articulo(int id, String nombre, String descripcion, double costo, Date caducidad, String codigo, int fk_categoria, int fk_proveedor) {
         this.ID_Articulo  = id;
         this.Nombre       = nombre;
         this.Descripcion  = descripcion;
@@ -30,15 +31,17 @@ public class Articulo {
         this.Caducidad    = caducidad;
         this.Codigo       = codigo;
         this.FK_Categoria = fk_categoria;
+        this.FK_Proveedor = fk_proveedor;
     }
 
-    public Articulo(String nombre, String descripcion, double costo, Date caducidad, String codigo, int fk_categoria) {
+    public Articulo(String nombre, String descripcion, double costo, Date caducidad, String codigo, int fk_categoria, int fk_proveedor) {
         this.Nombre       = nombre;
         this.Descripcion  = descripcion;
         this.Costo        = costo;
         this.Caducidad    = caducidad;
         this.Codigo       = codigo;
         this.FK_Categoria = fk_categoria;
+        this.FK_Proveedor = fk_proveedor;
     }
 
     public Articulo() {  
@@ -75,7 +78,7 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo{" + "ID_Articulo=" + ID_Articulo + ", Nombre=" + Nombre + ", Descripcion=" + Descripcion + ", Costo=" + Costo + ", Caducidad=" + Caducidad + ", FK_Categoria=" + FK_Categoria + '}';
+        return "Articulo{" + "ID_Articulo=" + ID_Articulo + ", Nombre=" + Nombre + ", Descripcion=" + Descripcion + ", Costo=" + Costo + ", Caducidad=" + Caducidad + ", Codigo=" + Codigo + ", FK_Categoria=" + FK_Categoria + ", FK_Proveedor=" + FK_Proveedor + '}';
     }
 
     /**
@@ -174,6 +177,20 @@ public class Articulo {
      */
     public void setCodigo(String Codigo) {
         this.Codigo = Codigo;
+    }
+
+    /**
+     * @return the FK_Proveedor
+     */
+    public int getFK_Proveedor() {
+        return FK_Proveedor;
+    }
+
+    /**
+     * @param FK_Proveedor the FK_Proveedor to set
+     */
+    public void setFK_Proveedor(int FK_Proveedor) {
+        this.FK_Proveedor = FK_Proveedor;
     }
     
 }

@@ -20,15 +20,15 @@ public interface iDetalleCompraDAO {
 
     public List<DetalleCompra> readAllForInput(String searchValue) throws SQLException;
 
-    public DetalleCompra raadByID(String primaryKey) throws SQLException;
+    public DetalleCompra raadByID(int primaryKey) throws SQLException;
 
     public boolean update(DetalleCompra obj) throws SQLException;
 
     public boolean delete(DetalleCompra obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(DetalleCompra obj) throws SQLException;
 

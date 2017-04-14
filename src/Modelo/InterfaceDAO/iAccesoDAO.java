@@ -20,15 +20,15 @@ public interface iAccesoDAO {
 
     public List<Acceso> readAllForInput(String searchValue) throws SQLException;
 
-    public Acceso raadByID(String primaryKey) throws SQLException;
+    public Acceso raadByID(int primaryKey) throws SQLException;
 
     public boolean update(Acceso obj) throws SQLException;
 
     public boolean delete(Acceso obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(Acceso obj) throws SQLException;
 }

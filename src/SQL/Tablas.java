@@ -37,9 +37,10 @@ public class Tablas {
         String CADUCIDAD    = "Caducidad";
         String CODIGO       = "Codigo";
         String FK_CATEGORIA = "FK_Categoria";
+        String FK_PROVEEDOR = "FK_Proveedor";
     }
     interface ColumnasCategoria{
-        String ID_CATEGORIA = "ID_Categoria";
+        String ID_CATEGORIA = "ID_CategoriaArticulo";
         String NOMBRE       = "Nombre";
     }
     interface ColumnasCliente{
@@ -74,7 +75,6 @@ public class Tablas {
         String ID_EMPLEADO = "ID_Empleado";
         String NOMBRE      = "Nombre";
         String APELLIDOS   = "Apellidos";
-        String SEXO        = "Sexo";
         String TELEFONO    = "Telefono";
     }
     interface ColumnasJornadasTrabajo{
@@ -94,6 +94,7 @@ public class Tablas {
         String NOMBRE       = "Nombre";
         String DIRECCION    = "Direccion";
         String TELEFONO     = "Telefono";
+        String WEB          = "Web";
     }
     
     public static class COLACCESO implements ColumnasAcceso{

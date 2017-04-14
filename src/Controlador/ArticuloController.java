@@ -13,13 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.DateTimeException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.plaf.basic.BasicListUI;
 
 /**
  *
@@ -90,6 +88,7 @@ public class ArticuloController implements ActionListener{
         getObjArticulo().setCaducidad(Date.valueOf(vistaArticulo.getDpCaducidad().getText()));
         getObjArticulo().setCodigo(vistaArticulo.getTfCodigo().getText());
         getObjArticulo().setFK_Categoria(1); // Aun no cargamos las categorias, todas seran frituras de momento
+        getObjArticulo().setFK_Proveedor(1); // Aun no cargamos los proveedores
     }
     
     private Articulo getArticuloSelect() throws SQLException{

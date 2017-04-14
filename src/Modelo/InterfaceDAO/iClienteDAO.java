@@ -20,15 +20,15 @@ public interface iClienteDAO {
 
     public List<Cliente> readAllForInput(String searchValue) throws SQLException;
 
-    public Cliente raadByID(String primaryKey) throws SQLException;
+    public Cliente raadByID(int primaryKey) throws SQLException;
 
     public boolean update(Cliente obj) throws SQLException;
 
     public boolean delete(Cliente obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(Cliente obj) throws SQLException;
 }

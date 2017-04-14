@@ -15,20 +15,21 @@ public class Empleado {
     private int ID_Empleado;
     private String Nombre;
     private String Apellidos;
-    private String Sexo;
     private String Telefono;
 
-    public Empleado(int id, String nombre, String apellidos, String sexo, String telefono) {
-    
+    public Empleado(int id, String nombre, String apellidos, String telefono) {
+        this.ID_Empleado = id;
+        this.Nombre = nombre;
+        this.Apellidos = apellidos;
+        this.Telefono = telefono;
     }
     public Empleado(){
         
     }
 
-    public Empleado(String Nombre, String Apellidos, String Sexo, String Telefono) {
+    public Empleado(String Nombre, String Apellidos, String Telefono) {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
-        this.Sexo = Sexo;
         this.Telefono = Telefono;
     }
 
@@ -63,7 +64,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "ID_Empleado=" + ID_Empleado + ", Nombre=" + Nombre + ", Apellidos=" + Apellidos + ", Sexo=" + Sexo + ", Telefono=" + Telefono + '}';
+        return "Empleado{" + "ID_Empleado=" + ID_Empleado + ", Nombre=" + Nombre + ", Apellidos=" + Apellidos + ", Telefono=" + Telefono + '}';
     }
 
     /**
@@ -107,21 +108,7 @@ public class Empleado {
     public void setApellidos(String Apellidos) {
         this.Apellidos = Apellidos;
     }
-
-    /**
-     * @return the Sexo
-     */
-    public String getSexo() {
-        return Sexo;
-    }
-
-    /**
-     * @param Sexo the Sexo to set
-     */
-    public void setSexo(String Sexo) {
-        this.Sexo = Sexo;
-    }
-
+    
     /**
      * @return the Telefono
      */

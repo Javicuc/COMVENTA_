@@ -39,7 +39,7 @@ public class DetallePedidoDAO implements iDetallePedidoDAO{
     }
 
     @Override
-    public DetallePedido raadByID(String primaryKey) throws SQLException {
+    public DetallePedido raadByID(int primaryKey) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -54,12 +54,12 @@ public class DetallePedidoDAO implements iDetallePedidoDAO{
     }
 
     @Override
-    public boolean deleteByID(String ID) throws SQLException {
+    public boolean deleteByID(int primaryKey) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean alreadyExisting(String primaryKey) throws SQLException {
+    public boolean alreadyExisting(int primaryKey) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

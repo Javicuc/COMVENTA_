@@ -16,7 +16,11 @@ public class Categoria {
     private String Nombre;
 
     public Categoria(int id, String nombre) {
-    
+        this.ID_CategoriaArticulo = id;
+        this.Nombre = nombre;
+    }
+    public Categoria(String nombre){
+        this.Nombre = nombre;
     }
     public Categoria(){
         

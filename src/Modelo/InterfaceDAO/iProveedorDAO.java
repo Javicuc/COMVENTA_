@@ -20,15 +20,15 @@ public interface iProveedorDAO {
 
     public List<Proveedor> readAllForInput(String searchValue) throws SQLException;
 
-    public Proveedor raadByID(String primaryKey) throws SQLException;
+    public Proveedor raadByID(int primaryKey) throws SQLException;
 
     public boolean update(Proveedor obj) throws SQLException;
 
     public boolean delete(Proveedor obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(Proveedor obj) throws SQLException;
 }

@@ -26,9 +26,9 @@ public interface iArticuloDAO {
 
     public boolean delete(Articulo obj) throws SQLException;
 
-    public boolean deleteByID(String ID) throws SQLException;
+    public boolean deleteByID(int primaryKey) throws SQLException;
 
-    public boolean alreadyExisting(String primaryKey) throws SQLException;
+    public boolean alreadyExisting(int primaryKey) throws SQLException;
 
     public boolean alreadyExisting(Articulo obj) throws SQLException;
 }
