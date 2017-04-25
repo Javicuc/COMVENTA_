@@ -20,7 +20,7 @@ public interface iProveedorDAO {
 
     public List<Proveedor> readAllForInput(String searchValue) throws SQLException;
 
-    public Proveedor raadByID(int primaryKey) throws SQLException;
+    public Proveedor readByID(int primaryKey) throws SQLException;
 
     public boolean update(Proveedor obj) throws SQLException;
 

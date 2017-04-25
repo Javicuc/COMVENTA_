@@ -20,7 +20,7 @@ public interface iEmpleadoDAO {
 
     public List<Empleado> readAllForInput(String searchValue) throws SQLException;
 
-    public Empleado raadByID(int primaryKey) throws SQLException;
+    public Empleado readByID(int primaryKey) throws SQLException;
 
     public boolean update(Empleado obj) throws SQLException;
 

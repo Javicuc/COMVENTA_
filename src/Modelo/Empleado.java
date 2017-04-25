@@ -23,11 +23,13 @@ public class Empleado {
         this.Apellidos = apellidos;
         this.Telefono = telefono;
     }
+    
     public Empleado(){
-        
+        this("","","");
     }
 
     public Empleado(String Nombre, String Apellidos, String Telefono) {
+        this.ID_Empleado = 0;
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.Telefono = Telefono;

@@ -69,7 +69,7 @@ public class ArticuloController implements ActionListener{
             vistaArticulo.getTfCosto().setText(String.valueOf(getObjArticulo().getCosto()));
             vistaArticulo.getDpCaducidad().setText(String.valueOf(getObjArticulo().getCaducidad()));
             vistaArticulo.getTfCodigo().setText(getObjArticulo().getCodigo());
-            vistaArticulo.getCbCategoria().setSelectedIndex(getObjArticulo().getFK_Categoria());
+            vistaArticulo.getCbCategoria().setSelectedIndex(1);
         } else {
             vistaArticulo.getTfNombre().setText("");
             vistaArticulo.getTaDescripcion().setText("");

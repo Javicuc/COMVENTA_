@@ -12,7 +12,6 @@ import java.util.Objects;
  * @author Javicuc
  */
 public class Acceso {
-    private int    FK_Empleado;
     private String Usuario;
     private String Clave;
 
@@ -31,7 +30,6 @@ public class Acceso {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 23 * hash + this.FK_Empleado;
         hash = 23 * hash + Objects.hashCode(this.Usuario);
         hash = 23 * hash + Objects.hashCode(this.Clave);
         return hash;
@@ -49,9 +47,6 @@ public class Acceso {
             return false;
         }
         final Acceso other = (Acceso) obj;
-        if (this.FK_Empleado != other.FK_Empleado) {
-            return false;
-        }
         if (!Objects.equals(this.Usuario, other.Usuario)) {
             return false;
         }
@@ -63,21 +58,7 @@ public class Acceso {
 
     @Override
     public String toString() {
-        return "Acceso{" + "ID_Empleado=" + FK_Empleado + ", Usuario=" + Usuario + ", Clave=" + Clave + '}';
-    }
-
-    /**
-     * @return the ID_Empleado
-     */
-    public int getID_Empleado() {
-        return FK_Empleado;
-    }
-
-    /**
-     * @param ID_Empleado the ID_Empleado to set
-     */
-    public void setID_Empleado(int ID_Empleado) {
-        this.FK_Empleado = ID_Empleado;
+        return "Acceso{Usuario=" + Usuario + ", Clave=" + Clave + '}';
     }
 
     /**
@@ -107,6 +88,4 @@ public class Acceso {
     public void setClave(String Clave) {
         this.Clave = Clave;
     }
-    
-    
 }

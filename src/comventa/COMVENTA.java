@@ -7,7 +7,7 @@ package comventa;
 
 import Modelo.*;
 import Modelo.DAO.DAOManager;
-import Vista.ArticuloView;
+import Vista.MainView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +41,7 @@ public class COMVENTA {
             Logger.getLogger(COMVENTA.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        ArticuloView accv = null;
-        try {
-            accv = new ArticuloView();
-        } catch (SQLException ex) {
-            Logger.getLogger(COMVENTA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        accv.setVisible(true);
+        MainView main = new MainView();
         for(Categoria temp : list)
             System.out.println(temp.toString());
     }

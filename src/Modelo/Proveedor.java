@@ -16,18 +16,25 @@ public class Proveedor {
     private String Nombre;
     private String Direccion;
     private String Telefono;
+    private String Web;
 
-    public Proveedor(int id, String nombre, String direccion, String telefono) {
-    
-    }
-    public Proveedor(){
-        
-    }
-
-    public Proveedor(String Nombre, String Direccion, String Telefono) {
+    public Proveedor(int id, String nombre, String direccion, String telefono, String web) {
+        this.ID_Proveedor = id;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
+        this.Web = web;
+    }
+    
+    public Proveedor() {
+        this("","","","");
+    }
+
+    public Proveedor(String Nombre, String Direccion, String Telefono, String web) {
+        this.Nombre = Nombre;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.Web = web;
     }
 
     @Override
@@ -75,7 +82,7 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "Proveedor{" + "ID_Proveedor=" + ID_Proveedor + ", Nombre=" + Nombre + ", Direccion=" + Direccion + ", Telefono=" + Telefono + '}';
+        return "Proveedor{" + "ID_Proveedor=" + ID_Proveedor + ", Nombre=" + Nombre + ", Direccion=" + Direccion + ", Telefono=" + Telefono + ", Web=" + Web + '}';
     }
 
     /**
@@ -118,5 +125,13 @@ public class Proveedor {
      */
     public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
+    }
+    
+    public String getWeb() {
+        return Web;
+    }
+    
+    public void setWeb(String web) {
+        this.Web = web;
     }
 }
