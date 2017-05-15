@@ -30,10 +30,12 @@ import javax.swing.JTable;
  */
 public class ArticuloController implements ActionListener{
     
-    private ArticuloView vistaArticulo;
-    private ArticuloDAO  managerArticulo;
-    private CategoriaDAO managerCategoria;
-    private ProveedorDAO managerProveedor;
+    private ArticuloView vistaArticulo; // Vista que recibimos del actual contexto
+    
+    private ArticuloDAO  managerArticulo;  // Dao que usaremos para manipular articulos
+    private CategoriaDAO managerCategoria; // Dao que usaremos para el combobox categoria
+    private ProveedorDAO managerProveedor; // Dao que usaremos para el combobox proveedor
+    
     private Articulo objArticulo;
     private boolean tfEdit;
     private ArticuloTableModel articuloTableModel;
@@ -48,10 +50,10 @@ public class ArticuloController implements ActionListener{
     private JComboBox cbProveedor;
     
     public ArticuloController(ArticuloView vista) throws SQLException {
-        this.managerArticulo  = new DAOManager().getArticuloDAO();
-        this.managerCategoria = new DAOManager().getCategoriaDAO();
-        this.managerProveedor = new DAOManager().getProveedorDAO();
-        this.vistaArticulo = vista;
+        this.managerArticulo  = new DAOManager().getArticuloDAO(); // Generamos el Dao de articulos
+        this.managerCategoria = new DAOManager().getCategoriaDAO(); // Generamos el Dao de categorias
+        this.managerProveedor = new DAOManager().getProveedorDAO(); // Generamos el Dao de proveedores
+        this.vistaArticulo = vista;                                // Obtenemos la vista del actual contexto
         
         this.articuloTableModel = new ArticuloTableModel(managerArticulo);
         this.articuloTableModel.updateTable();

@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author javilubz
@@ -317,40 +321,6 @@ public class VentasView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentasView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
@@ -383,4 +353,134 @@ public class VentasView extends javax.swing.JFrame {
     private javax.swing.JTextField tfTotalFinal;
     private javax.swing.JTextField tfTotalTabla;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtAgregar() {
+        return btAgregar;
+    }
+
+    public void setBtAgregar(JButton btAgregar) {
+        this.btAgregar = btAgregar;
+    }
+
+    public JButton getBtBuscarProd() {
+        return btBuscarProd;
+    }
+
+    public void setBtBuscarProd(JButton btBuscarProd) {
+        this.btBuscarProd = btBuscarProd;
+    }
+
+    public JButton getBtCobrar() {
+        return btCobrar;
+    }
+
+    public void setBtCobrar(JButton btCobrar) {
+        this.btCobrar = btCobrar;
+    }
+
+    public JButton getBtEliminarProd() {
+        return btEliminarProd;
+    }
+
+    public void setBtEliminarProd(JButton btEliminarProd) {
+        this.btEliminarProd = btEliminarProd;
+    }
+
+    public JButton getBtEliminarTicket() {
+        return btEliminarTicket;
+    }
+
+    public void setBtEliminarTicket(JButton btEliminarTicket) {
+        this.btEliminarTicket = btEliminarTicket;
+    }
+
+    public JButton getBtImprimir() {
+        return btImprimir;
+    }
+
+    public void setBtImprimir(JButton btImprimir) {
+        this.btImprimir = btImprimir;
+    }
+
+    public JButton getBtProdComun() {
+        return btProdComun;
+    }
+
+    public void setBtProdComun(JButton btProdComun) {
+        this.btProdComun = btProdComun;
+    }
+
+    public JButton getBtVenta() {
+        return btVenta;
+    }
+
+    public void setBtVenta(JButton btVenta) {
+        this.btVenta = btVenta;
+    }
+
+    public JButton getBtVentasDia() {
+        return btVentasDia;
+    }
+
+    public void setBtVentasDia(JButton btVentasDia) {
+        this.btVentasDia = btVentasDia;
+    }
+
+    public JTable getTablaTicket() {
+        return tablaTicket;
+    }
+
+    public void setTablaTicket(JTable tablaTicket) {
+        this.tablaTicket = tablaTicket;
+    }
+
+    public JTextField getTfBuscar() {
+        return tfBuscar;
+    }
+
+    public void setTfBuscar(JTextField tfBuscar) {
+        this.tfBuscar = tfBuscar;
+    }
+
+    public JTextField getTfCambio() {
+        return tfCambio;
+    }
+
+    public void setTfCambio(JTextField tfCambio) {
+        this.tfCambio = tfCambio;
+    }
+
+    public JTextField getTfCantidadProds() {
+        return tfCantidadProds;
+    }
+
+    public void setTfCantidadProds(JTextField tfCantidadProds) {
+        this.tfCantidadProds = tfCantidadProds;
+    }
+
+    public JTextField getTfEfectivo() {
+        return tfEfectivo;
+    }
+
+    public void setTfEfectivo(JTextField tfEfectivo) {
+        this.tfEfectivo = tfEfectivo;
+    }
+
+    public JTextField getTfTotalFinal() {
+        return tfTotalFinal;
+    }
+
+    public void setTfTotalFinal(JTextField tfTotalFinal) {
+        this.tfTotalFinal = tfTotalFinal;
+    }
+
+    public JTextField getTfTotalTabla() {
+        return tfTotalTabla;
+    }
+
+    public void setTfTotalTabla(JTextField tfTotalTabla) {
+        this.tfTotalTabla = tfTotalTabla;
+    }
+
+    
 }
