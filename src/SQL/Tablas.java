@@ -49,7 +49,6 @@ public class Tablas {
         String APELLIDOS  = "Apellidos";
         String TELEFONO   = "Telefono";
         String DIRECCION  = "Direccion";
-        String CIUDAD     = "Ciudad_Actual";
     }
     interface ColumnasCompra{
         String ID_COMPRA = "ID_Compra";

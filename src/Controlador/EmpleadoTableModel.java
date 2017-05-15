@@ -40,8 +40,6 @@ public class EmpleadoTableModel extends AbstractTableModel{
  
     public void updateTable() throws SQLException{
         data = empleadoDAO.readAll();
-        for(Empleado tem:data)
-            System.out.println(tem.toString());
     }
     
     @Override

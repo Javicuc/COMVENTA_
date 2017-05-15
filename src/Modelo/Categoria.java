@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.util.Objects;
+import sun.nio.ch.FileKey;
 
 /**
  *
@@ -57,7 +58,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "Categoria{" + "ID_CategoriaArticulo=" + ID_CategoriaArticulo + ", Nombre=" + Nombre + '}';
+        return ID_CategoriaArticulo +" : " + Nombre;
     }
 
     /**

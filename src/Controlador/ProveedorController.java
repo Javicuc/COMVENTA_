@@ -23,6 +23,7 @@ import javax.swing.JTable;
  * @author Javicuc
  */
 public class ProveedorController implements ActionListener {
+    private boolean tfEdit;
     private Proveedor unProveedor;
     private ProveedorDAO proveedorDAO;
     private ProveedoresView proveedorVista;
@@ -94,7 +95,7 @@ public class ProveedorController implements ActionListener {
             Proveedor proveedor = getProveedorSelect();
             setUnProveedor(proveedor);
             btnGuardar.setEnabled(true);
-            //setTfEdit(true);
+            setTfEdit(true);
             loadTextFields();
         } catch (SQLException ex) {
             Logger.getLogger(ArticuloController.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,7 +135,7 @@ public class ProveedorController implements ActionListener {
                 }
                 
                 setUnProveedor(null);
-                //setTfEdit(false);
+                setTfEdit(false);
                 loadTextFields();
                 btnGuardar.setEnabled(false);
                 btnCancelar.setEnabled(false);
@@ -151,6 +152,7 @@ public class ProveedorController implements ActionListener {
 
     private void cancelarActionPerformed() {                                            
         setUnProveedor(null);
+        setTfEdit(false);
         loadTextFields();
         tablaProveedores.clearSelection();
         btnGuardar.setEnabled(false);
@@ -160,6 +162,7 @@ public class ProveedorController implements ActionListener {
     private void nuevoActionPerformed() {
         setUnProveedor(null);
         loadTextFields();
+        setTfEdit(true);
         tablaProveedores.clearSelection();
         proveedorVista.getTxtNombre().requestFocusInWindow();
         btnGuardar.setEnabled(true);
@@ -204,5 +207,22 @@ public class ProveedorController implements ActionListener {
 
     public void setUnProveedor(Proveedor unProveedor) {
         this.unProveedor = unProveedor;
+    }
+    /**
+     * @return the tfEdit
+     */
+    public boolean isTfEdit() {
+        return tfEdit;
+    }
+
+    /**
+     * @param tfEdit the tfEdit to set
+     */
+    public void setTfEdit(boolean tfEdit) {
+        this.tfEdit = tfEdit;
+        proveedorVista.getTxtNombre().setEnabled(tfEdit);
+        proveedorVista.getTxtDireccion().setEnabled(tfEdit);
+        proveedorVista.getTxtTelefono().setEnabled(tfEdit);
+        proveedorVista.getTxtWeb().setEnabled(tfEdit);
     }
 }

@@ -17,19 +17,40 @@ public class Cliente {
     private String Apellidos;
     private String Telefono;
     private String Direccion;
-    private String Ciudad_Actual;
 
-    public Cliente(int id, String nombre, String apellidos, String telefono, String direccion, String ciudad) {
-    }
+    
     public Cliente(){
         
     }
 
+    public Cliente(int ID_Cliente, String Nombre, String Apellidos, String Telefono, String Direccion) {
+        this.ID_Cliente = ID_Cliente;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Telefono = Telefono;
+        this.Direccion = Direccion;
+    }
+
+    public Cliente(String Nombre, String Apellidos, String Telefono, String Direccion) {
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Telefono = Telefono;
+        this.Direccion = Direccion;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "ID_Cliente=" + ID_Cliente + ", Nombre=" + Nombre + ", Apellidos=" + Apellidos + ", Telefono=" + Telefono + ", Direccion=" + Direccion + '}';
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.ID_Cliente;
-        hash = 79 * hash + Objects.hashCode(this.Nombre);
+        int hash = 7;
+        hash = 23 * hash + this.ID_Cliente;
+        hash = 23 * hash + Objects.hashCode(this.Nombre);
+        hash = 23 * hash + Objects.hashCode(this.Apellidos);
+        hash = 23 * hash + Objects.hashCode(this.Telefono);
+        hash = 23 * hash + Objects.hashCode(this.Direccion);
         return hash;
     }
 
@@ -48,22 +69,23 @@ public class Cliente {
         if (this.ID_Cliente != other.ID_Cliente) {
             return false;
         }
+        if (!Objects.equals(this.Nombre, other.Nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.Apellidos, other.Apellidos)) {
+            return false;
+        }
+        if (!Objects.equals(this.Telefono, other.Telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.Direccion, other.Direccion)) {
+            return false;
+        }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "ID_Cliente=" + ID_Cliente + ", Nombre=" + Nombre + ", Apellidos=" + Apellidos + ", Telefono=" + Telefono + ", Direccion=" + Direccion + ", Ciudad_Actual=" + Ciudad_Actual + '}';
-    }
-
-    public Cliente(String Nombre, String Apellidos, String Telefono, String Direccion, String Ciudad_Actual) {
-        this.Nombre = Nombre;
-        this.Apellidos = Apellidos;
-        this.Telefono = Telefono;
-        this.Direccion = Direccion;
-        this.Ciudad_Actual = Ciudad_Actual;
-    }
-
+    
+    
+    
     /**
      * @return the ID_Cliente
      */
@@ -132,19 +154,5 @@ public class Cliente {
      */
     public void setDireccion(String Direccion) {
         this.Direccion = Direccion;
-    }
-
-    /**
-     * @return the Ciudad_Actual
-     */
-    public String getCiudad_Actual() {
-        return Ciudad_Actual;
-    }
-
-    /**
-     * @param Ciudad_Actual the Ciudad_Actual to set
-     */
-    public void setCiudad_Actual(String Ciudad_Actual) {
-        this.Ciudad_Actual = Ciudad_Actual;
     }
 }

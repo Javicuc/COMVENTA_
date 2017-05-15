@@ -32,7 +32,7 @@ public class ArticuloDAO implements iArticuloDAO{
     final String UPDATE = "UPDATE " + Tabla.ARTICULO + " SET " + COLARTICULO.NOMBRE + " = ?," + COLARTICULO.DESCRIPCION
                            + " = ?," + COLARTICULO.COSTO + " = ?," + COLARTICULO.CADUCIDAD + " = ?," + COLARTICULO.CODIGO
                            + " = ?," + COLARTICULO.FK_CATEGORIA + " = ?," + COLARTICULO.FK_PROVEEDOR + " = ? WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
-    final String GETALL = "SELECT * FROM " + Tabla.ARTICULO + " ORDER BY " + COLARTICULO.NOMBRE;
+    final String GETALL = "SELECT * FROM " + Tabla.ARTICULO;
     final String GETONE = "SELECT * FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
     final String DELETE = "DELETE FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
     final String GETALLORDERBY = "SELECT * FROM " + Tabla.ARTICULO + " ORDER BY %s";

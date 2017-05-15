@@ -44,8 +44,6 @@ public class ArticuloTableModel extends AbstractTableModel{
  
     public void updateTable() throws SQLException{
         data = articulo.readAll();
-        for(Articulo tem:data)
-            System.out.println(tem.toString());
     }
     
     @Override
@@ -75,5 +73,5 @@ public class ArticuloTableModel extends AbstractTableModel{
             default: return "";
         }
     }
-    
+   
 }

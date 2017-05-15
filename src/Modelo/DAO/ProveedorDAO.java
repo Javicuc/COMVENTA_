@@ -12,6 +12,8 @@ import SQL.Tablas.Tabla;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,14 +24,14 @@ public class ProveedorDAO implements iProveedorDAO{
 
     private Connection con;
     
-    final String INSERT = "INSERT INTO " + Tabla.PROVEEDOR + " (" + COLPROVEEDOR.ID_PROVEEDOR + "," +
-            COLPROVEEDOR.NOMBRE + "," + COLPROVEEDOR.DIRECCION +","+ COLPROVEEDOR.TELEFONO + "," + 
-            COLPROVEEDOR.WEB + ")" + "VALUES(?,?,?,?,?)";
-    final String UPDATE = "UPDATE " + Tabla.PROVEEDOR + " SET " + COLPROVEEDOR.NOMBRE + " = ?," +
-            COLPROVEEDOR.DIRECCION + " = ?," + COLPROVEEDOR.TELEFONO + COLPROVEEDOR.WEB + " = ?," +
-            " = ?, WHERE " + COLPROVEEDOR.ID_PROVEEDOR +"= ?";
-    final String GETALL = "SELECT * FROM " + Tabla.PROVEEDOR + " ORDER BY " + COLPROVEEDOR.NOMBRE;
-    final String GETONE = "SELECT * FROM " + Tabla.PROVEEDOR + "WHERE " + COLPROVEEDOR.ID_PROVEEDOR + " = ?" ;
+    final String INSERT = "INSERT INTO " + Tabla.PROVEEDOR + " (" + COLPROVEEDOR.ID_PROVEEDOR + ", " +
+            COLPROVEEDOR.NOMBRE + ", " + COLPROVEEDOR.DIRECCION +", " + COLPROVEEDOR.TELEFONO + ", " + 
+            COLPROVEEDOR.WEB + ")" + " VALUES(?,?,?,?,?)";
+    final String UPDATE = "UPDATE " + Tabla.PROVEEDOR + " SET " + COLPROVEEDOR.NOMBRE + " = ?, " +
+            COLPROVEEDOR.DIRECCION + " = ?, " + COLPROVEEDOR.TELEFONO + " = ?, " + COLPROVEEDOR.WEB +
+            " = ? WHERE " + COLPROVEEDOR.ID_PROVEEDOR + " = ?";
+    final String GETALL = "SELECT * FROM " + Tabla.PROVEEDOR + " ORDER BY " + COLPROVEEDOR.ID_PROVEEDOR;
+    final String GETONE = "SELECT * FROM " + Tabla.PROVEEDOR + " WHERE " + COLPROVEEDOR.ID_PROVEEDOR + " = ?";
     final String DELETE = "DELETE FROM " + Tabla.PROVEEDOR + " WHERE " + COLPROVEEDOR.ID_PROVEEDOR + " = ?";
     
     public ProveedorDAO(Connection con) {
@@ -63,28 +65,35 @@ public class ProveedorDAO implements iProveedorDAO{
 
     @Override
     public List<Proveedor> readAll() throws SQLException {
-        ArrayList proveedores = new ArrayList();
-        Proveedor proveedor = new Proveedor();
-        
+        List<Proveedor> list = new ArrayList<Proveedor>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
-            
-            PreparedStatement ps = con.prepareStatement(GETALL);
-            ResultSet res = ps.executeQuery();
-            
-            while (res.next()) {
-                proveedor.setID_Proveedor(Integer.parseInt(res.getString(1)));
-                proveedor.setNombre(res.getString(2));
-                proveedor.setDireccion(res.getString(3));
-                proveedor.setTelefono(res.getString(4));
-                proveedor.setWeb(res.getString(5));
-                proveedores.add(proveedor);
+            ps = con.prepareStatement(GETALL);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Proveedor pro = convertirRS(rs);
+                list.add(pro);
             }
-        
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }    
+            }
         }
-        
-        return proveedores;
+        return list;
     }
 
     @Override
@@ -94,58 +103,84 @@ public class ProveedorDAO implements iProveedorDAO{
 
     @Override
     public Proveedor readByID(int primaryKey) throws SQLException {
-        Proveedor proveedor = new Proveedor();
+        Proveedor pro = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
-            
-            PreparedStatement ps = con.prepareStatement(GETONE);
+            ps = con.prepareStatement(GETONE);
             ps.setInt(1, primaryKey);
-            ResultSet res = ps.executeQuery();
-        
-            if (res.next()) {
-                proveedor.setID_Proveedor(Integer.parseInt(res.getString(1)));
-                proveedor.setNombre(res.getString(2));
-                proveedor.setDireccion(res.getString(3));
-                proveedor.setTelefono(res.getString(4));
-                proveedor.setWeb(res.getString(5));
+            rs = ps.executeQuery();
+            while (rs.next()) 
+                pro = convertirRS(rs);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }
             }
-            con.close();
-        
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la conexion "+ex);
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }    
+            }
         }
-        
-        return proveedor;
+        return pro;
     }
 
     @Override
     public boolean update(Proveedor obj) throws SQLException {
         boolean actualizar = false;
+        PreparedStatement ps = null;
         try {
-
-            PreparedStatement ps = con.prepareStatement(UPDATE);
-            ps.setInt(1, obj.getID_Proveedor());
-            ps.setString(2, obj.getNombre());
-            ps.setString(3, obj.getDireccion());
-            ps.setString(4, obj.getTelefono());
-            ps.setString(5, obj.getWeb());
-            
-            if (!ps.execute()) {
-                JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente...");
+            ps = con.prepareStatement(UPDATE);
+            ps.setString(1, obj.getNombre());
+            ps.setString(2, obj.getDireccion());
+            ps.setString(3, obj.getTelefono());
+            ps.setString(4, obj.getWeb());
+            ps.setInt(5, obj.getID_Proveedor());
+            if(ps.executeUpdate() != 0)
                 actualizar = true;
-            } else {
-                JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar...");
-            }
-            con.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la conexion "+e);
-        
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch(SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
         }
         return actualizar;
     }
 
     @Override
     public boolean delete(Proveedor obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean eliminar = false;
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(DELETE);
+            ps.setInt(1, obj.getID_Proveedor());
+            if(ps.executeUpdate() != 0)
+                eliminar = true;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch(SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+        }
+        return eliminar;
     }
 
     @Override
@@ -177,6 +212,22 @@ public class ProveedorDAO implements iProveedorDAO{
     @Override
     public boolean alreadyExisting(Proveedor obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Proveedor convertirRS(ResultSet rs) {
+        Proveedor prov = null;
+        try {
+            int    id     = rs.getInt(COLPROVEEDOR.ID_PROVEEDOR);
+            String nombre = rs.getString(COLPROVEEDOR.NOMBRE);
+            String direc  = rs.getString(COLPROVEEDOR.DIRECCION);
+            String tel    = rs.getString(COLPROVEEDOR.TELEFONO);
+            String web    = rs.getString(COLPROVEEDOR.WEB);
+            System.out.println(id+" "+nombre+" "+direc+" "+tel+" "+web);
+            prov = new Proveedor(id, nombre, direc,tel,web);
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticuloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return prov;
     }
     
 }

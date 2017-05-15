@@ -10,21 +10,25 @@ package Modelo;
  * @author Javicuc
  */
 public class DetallePedido {
+    
     private int FK_Pedido;
     private int FK_Articulo;
     private int Cantidad;
     private double Costo;
-    private int FK_Categoria;
 
-    public DetallePedido(int fk_pedido, int fk_articulo, int cantidad, double costo, int fk_categoria) {
+    public DetallePedido() {
     }
-    public DetallePedido(){
-        
+
+    public DetallePedido(int FK_Pedido, int FK_Articulo, int Cantidad, double Costo) {
+        this.FK_Pedido = FK_Pedido;
+        this.FK_Articulo = FK_Articulo;
+        this.Cantidad = Cantidad;
+        this.Costo = Costo;
     }
 
     @Override
     public String toString() {
-        return "DetallePedido{" + "FK_Pedido=" + FK_Pedido + ", FK_Articulo=" + FK_Articulo + ", Cantidad=" + Cantidad + ", Costo=" + Costo + ", FK_Categoria=" + FK_Categoria + '}';
+        return "DetallePedido{" + "FK_Pedido=" + FK_Pedido + ", FK_Articulo=" + FK_Articulo + ", Cantidad=" + Cantidad + ", Costo=" + Costo + '}';
     }
 
     /**
@@ -81,19 +85,5 @@ public class DetallePedido {
      */
     public void setCosto(double Costo) {
         this.Costo = Costo;
-    }
-
-    /**
-     * @return the FK_Categoria
-     */
-    public int getFK_Categoria() {
-        return FK_Categoria;
-    }
-
-    /**
-     * @param FK_Categoria the FK_Categoria to set
-     */
-    public void setFK_Categoria(int FK_Categoria) {
-        this.FK_Categoria = FK_Categoria;
     }
 }

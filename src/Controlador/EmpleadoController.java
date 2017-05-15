@@ -22,6 +22,8 @@ import javax.swing.*;
  */
 public class EmpleadoController implements ActionListener {
     
+    private boolean tfEdit;
+    
     private Empleado unEmpleado;
     private EmpleadoDAO empleadoDAO;
     private EmpleadoView empleadoVista;
@@ -90,7 +92,7 @@ public class EmpleadoController implements ActionListener {
             Empleado empleado = getEmpleadoSelect();
             setUnEmpleado(empleado);
             btnGuardar.setEnabled(true);
-            //setTfEdit(true);
+            setTfEdit(true);
             loadTextFields();
         } catch (SQLException ex) {
             Logger.getLogger(ArticuloController.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,7 +132,7 @@ public class EmpleadoController implements ActionListener {
                 }
                 
                 setUnEmpleado(null);
-                //setTfEdit(false);
+                setTfEdit(false);
                 loadTextFields();
                 btnGuardar.setEnabled(false);
                 btnCancelar.setEnabled(false);
@@ -147,6 +149,7 @@ public class EmpleadoController implements ActionListener {
 
     private void cancelarActionPerformed() {                                            
         setUnEmpleado(null);
+        setTfEdit(false);
         loadTextFields();
         tablaEmpleados.clearSelection();
         btnGuardar.setEnabled(false);
@@ -156,6 +159,7 @@ public class EmpleadoController implements ActionListener {
     private void nuevoActionPerformed() {
         setUnEmpleado(null);
         loadTextFields();
+        setTfEdit(true);
         tablaEmpleados.clearSelection();
         empleadoVista.getTxtNombre().requestFocusInWindow();
         btnGuardar.setEnabled(true);
@@ -199,6 +203,15 @@ public class EmpleadoController implements ActionListener {
 
     public void setUnEmpleado(Empleado unEmpleado) {
         this.unEmpleado = unEmpleado;
+    }
+    private boolean isTfEdit(){
+        return tfEdit;
+    }
+    private void setTfEdit(boolean tfEdit) {
+        this.tfEdit = tfEdit;
+        empleadoVista.getTxtNombre().setEnabled(tfEdit);
+        empleadoVista.getTxtApellidos().setEnabled(tfEdit);
+        empleadoVista.getTxtTelefono().setEnabled(tfEdit);
     }
     
 }

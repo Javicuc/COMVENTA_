@@ -49,30 +49,40 @@ public class MainView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         LBL_Icon = new javax.swing.JLabel();
-        panelBarButtons = new javax.swing.JPanel();
-        btProductos = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
         btVentas = new javax.swing.JButton();
-        btCorte = new javax.swing.JButton();
+        btProductos = new javax.swing.JButton();
+        btClientes = new javax.swing.JButton();
+        btProveedores = new javax.swing.JButton();
         btEmpleados = new javax.swing.JButton();
         btInventario = new javax.swing.JButton();
-        btProveedores = new javax.swing.JButton();
-        btClientes = new javax.swing.JButton();
-        btConfiguracion = new javax.swing.JButton();
-        panelBarUser = new javax.swing.JPanel();
-        lblUser = new javax.swing.JLabel();
-        btExit = new javax.swing.JButton();
-        btSession = new javax.swing.JButton();
+        btReportes = new javax.swing.JButton();
+        btCorte = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         panelViews = new javax.swing.JPanel();
+        lblUser = new javax.swing.JLabel();
+        jToolBar2 = new javax.swing.JToolBar();
+        btSession = new javax.swing.JButton();
+        btConfiguracion = new javax.swing.JButton();
+        btExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(LBL_Icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1402, 192));
 
-        panelBarButtons.setBackground(new java.awt.Color(204, 204, 204));
-        panelBarButtons.setLayout(new java.awt.GridBagLayout());
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        btVentas.setText("VENTAS");
+        btVentas.setFocusable(false);
+        btVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVentasActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btVentas);
 
         btProductos.setText("PRODUCTOS");
         btProductos.setFocusable(false);
@@ -83,68 +93,18 @@ public class MainView extends javax.swing.JFrame {
                 btProductosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 66;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 4, 3, 0);
-        panelBarButtons.add(btProductos, gridBagConstraints);
+        jToolBar1.add(btProductos);
 
-        btVentas.setText("VENTAS");
-        btVentas.setFocusable(false);
-        btVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 93;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 17, 3, 0);
-        panelBarButtons.add(btVentas, gridBagConstraints);
-
-        btCorte.setText("CORTE");
-        btCorte.setFocusable(false);
-        btCorte.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btCorte.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 3, 0);
-        panelBarButtons.add(btCorte, gridBagConstraints);
-
-        btEmpleados.setText("EMPLEADOS");
-        btEmpleados.addActionListener(new java.awt.event.ActionListener() {
+        btClientes.setText("CLIENTES");
+        btClientes.setFocusable(false);
+        btClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEmpleadosActionPerformed(evt);
+                btClientesActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 67;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 3, 0);
-        panelBarButtons.add(btEmpleados, gridBagConstraints);
-
-        btInventario.setText("INVENTARIO");
-        btInventario.setFocusable(false);
-        btInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btInventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 70;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 3, 0);
-        panelBarButtons.add(btInventario, gridBagConstraints);
+        jToolBar1.add(btClientes);
 
         btProveedores.setText("PROVEEDORES");
         btProveedores.setFocusable(false);
@@ -155,96 +115,117 @@ public class MainView extends javax.swing.JFrame {
                 btProveedoresActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 52;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 3, 0);
-        panelBarButtons.add(btProveedores, gridBagConstraints);
+        jToolBar1.add(btProveedores);
 
-        btClientes.setText("CLIENTES");
-        btClientes.setFocusable(false);
-        btClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 84;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 3, 0);
-        panelBarButtons.add(btClientes, gridBagConstraints);
+        btEmpleados.setText("EMPLEADOS");
+        btEmpleados.setFocusable(false);
+        btEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEmpleadosActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btEmpleados);
 
-        btConfiguracion.setText("CONFIGURACION");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 45;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 3, 0);
-        panelBarButtons.add(btConfiguracion, gridBagConstraints);
+        btInventario.setText("INVENTARIO");
+        btInventario.setFocusable(false);
+        btInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btInventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInventarioActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btInventario);
 
-        getContentPane().add(panelBarButtons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1370, 60));
+        btReportes.setText("REPORTES");
+        btReportes.setFocusable(false);
+        btReportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btReportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btReportes);
 
-        panelBarUser.setBackground(new java.awt.Color(204, 204, 204));
-        panelBarUser.setLayout(new java.awt.GridBagLayout());
+        btCorte.setText("CORTE");
+        btCorte.setFocusable(false);
+        btCorte.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCorte.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btCorte);
+
+        panelViews.setLayout(new javax.swing.OverlayLayout(panelViews));
+        jScrollPane1.setViewportView(panelViews);
 
         lblUser.setText("Usuario:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 417;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 0);
-        panelBarUser.add(lblUser, gridBagConstraints);
+
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+
+        btSession.setText("CERRAR");
+        btSession.setFocusable(false);
+        btSession.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSession.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(btSession);
+
+        btConfiguracion.setText("CONFIGURACION");
+        btConfiguracion.setFocusable(false);
+        btConfiguracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btConfiguracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfiguracionActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btConfiguracion);
 
         btExit.setText("SALIR");
+        btExit.setFocusable(false);
+        btExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btExit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExitActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
-        panelBarUser.add(btExit, gridBagConstraints);
+        jToolBar2.add(btExit);
 
-        btSession.setText("CERRAR");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 0);
-        panelBarUser.add(btSession, gridBagConstraints);
-
-        getContentPane().add(panelBarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, 650, -1));
-
-        javax.swing.GroupLayout panelViewsLayout = new javax.swing.GroupLayout(panelViews);
-        panelViews.setLayout(panelViewsLayout);
-        panelViewsLayout.setHorizontalGroup(
-            panelViewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1380, Short.MAX_VALUE)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(LBL_Icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1350, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(594, 594, 594)
+                        .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        panelViewsLayout.setVerticalGroup(
-            panelViewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LBL_Icon, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
         );
-
-        getContentPane().add(panelViews, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 1380, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btExitActionPerformed
 
     private void btProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProductosActionPerformed
         ArticuloView viewArticulo = null;
@@ -288,6 +269,41 @@ public class MainView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btEmpleadosActionPerformed
 
+    private void btInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInventarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btInventarioActionPerformed
+
+    private void btClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClientesActionPerformed
+        ClientesView view = null;
+        try {
+            view = new ClientesView();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        panelViews.removeAll();
+        panelViews.updateUI();
+        view.getContentPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        panelViews.add(view.getContentPane(),BorderLayout.CENTER);
+        
+    }//GEN-LAST:event_btClientesActionPerformed
+
+    private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btConfiguracionActionPerformed
+
+    private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btExitActionPerformed
+
+    private void btVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVentasActionPerformed
+        VentasView view = null;
+        view = new VentasView();
+        panelViews.removeAll();
+        panelViews.updateUI();
+        view.getContentPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        panelViews.add(view.getContentPane(),BorderLayout.CENTER);    
+    }//GEN-LAST:event_btVentasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBL_Icon;
     private javax.swing.JButton btClientes;
@@ -298,11 +314,13 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton btInventario;
     private javax.swing.JButton btProductos;
     private javax.swing.JButton btProveedores;
+    private javax.swing.JButton btReportes;
     private javax.swing.JButton btSession;
     private javax.swing.JButton btVentas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JPanel panelBarButtons;
-    private javax.swing.JPanel panelBarUser;
     private javax.swing.JPanel panelViews;
     // End of variables declaration//GEN-END:variables
 }

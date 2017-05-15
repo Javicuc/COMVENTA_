@@ -40,8 +40,8 @@ public class ProveedorTableModel extends AbstractTableModel{
  
     public void updateTable() throws SQLException{
         data = proveedorDAO.readAll();
-        for(Proveedor tem:data)
-            System.out.println(tem.toString());
+        for(Proveedor tem : data)
+            System.out.println(tem);
     }
     
     @Override
@@ -51,7 +51,7 @@ public class ProveedorTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4; // Se puede calcular de otra forma, de momento lo dejaremos así
+        return 5; // Se puede calcular de otra forma, de momento lo dejaremos así
     }
 
     @Override

@@ -7,15 +7,20 @@ package Controlador;
 
 import Modelo.Articulo;
 import Modelo.DAO.ArticuloDAO;
+import Modelo.DAO.CategoriaDAO;
 import Modelo.DAO.DAOManager;
+import Modelo.DAO.ProveedorDAO;
 import Vista.ArticuloView;
+import Vista.CategoriaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -26,7 +31,9 @@ import javax.swing.JTable;
 public class ArticuloController implements ActionListener{
     
     private ArticuloView vistaArticulo;
-    private ArticuloDAO managerArticulo;
+    private ArticuloDAO  managerArticulo;
+    private CategoriaDAO managerCategoria;
+    private ProveedorDAO managerProveedor;
     private Articulo objArticulo;
     private boolean tfEdit;
     private ArticuloTableModel articuloTableModel;
@@ -36,30 +43,44 @@ public class ArticuloController implements ActionListener{
     private JButton btNuevo;
     private JButton btGuardar;
     private JButton btCancelar;
+    private JButton btCategorias;
+    private JComboBox cbCategoria;
+    private JComboBox cbProveedor;
     
     public ArticuloController(ArticuloView vista) throws SQLException {
-        this.managerArticulo = new DAOManager().getArticuloDAO();
+        this.managerArticulo  = new DAOManager().getArticuloDAO();
+        this.managerCategoria = new DAOManager().getCategoriaDAO();
+        this.managerProveedor = new DAOManager().getProveedorDAO();
         this.vistaArticulo = vista;
+        
         this.articuloTableModel = new ArticuloTableModel(managerArticulo);
         this.articuloTableModel.updateTable();
         this.tableArticulos = vistaArticulo.getTableArticulos();
         this.tableArticulos.setModel(articuloTableModel);
-        this.btNuevo = vistaArticulo.getBtNuevo();
-        this.btEliminar = vistaArticulo.getBtEliminar();
-        this.btModificar = vistaArticulo.getBtModificar();
-        this.btGuardar = vistaArticulo.getBtGuardar();
-        this.btCancelar = vistaArticulo.getBtCancelar();
+        
+        this.btNuevo      = vistaArticulo.getBtNuevo();
+        this.btEliminar   = vistaArticulo.getBtEliminar();
+        this.btModificar  = vistaArticulo.getBtModificar();
+        this.btGuardar    = vistaArticulo.getBtGuardar();
+        this.btCancelar   = vistaArticulo.getBtCancelar();
+        this.btCategorias = vistaArticulo.getBtCategorias();
+        this.cbCategoria  = vistaArticulo.getCbCategoria();
+        this.cbProveedor  = vistaArticulo.getCbProveedor();
+        
         this.btNuevo.addActionListener(this);
         this.btModificar.addActionListener(this);
         this.btEliminar.addActionListener(this);
         this.btGuardar.addActionListener(this);
         this.btCancelar.addActionListener(this);
+        this.btCategorias.addActionListener(this);
         this.tableArticulos.getSelectionModel().addListSelectionListener(c ->{
             boolean isSelect = (tableArticulos.getSelectedRow() != -1);
             btModificar.setEnabled(isSelect);
             btEliminar.setEnabled(isSelect);
             btCancelar.setEnabled(isSelect);
-        });
+        }); 
+        this.cbCategoria.setModel(new DefaultComboBoxModel(managerCategoria.readAll().toArray()));
+        this.cbProveedor.setModel(new DefaultComboBoxModel(managerProveedor.readAll().toArray()));
     }
     
     public void loadTextFields(){
@@ -69,7 +90,8 @@ public class ArticuloController implements ActionListener{
             vistaArticulo.getTfCosto().setText(String.valueOf(getObjArticulo().getCosto()));
             vistaArticulo.getDpCaducidad().setText(String.valueOf(getObjArticulo().getCaducidad()));
             vistaArticulo.getTfCodigo().setText(getObjArticulo().getCodigo());
-            vistaArticulo.getCbCategoria().setSelectedIndex(1);
+            vistaArticulo.getCbCategoria().setSelectedIndex(getObjArticulo().getFK_Categoria() - 1);
+            vistaArticulo.getCbProveedor().setSelectedIndex(getObjArticulo().getFK_Proveedor() - 1);
         } else {
             vistaArticulo.getTfNombre().setText("");
             vistaArticulo.getTaDescripcion().setText("");
@@ -77,6 +99,7 @@ public class ArticuloController implements ActionListener{
             vistaArticulo.getDpCaducidad().setText("");
             vistaArticulo.getTfCodigo().setText("");
             vistaArticulo.getCbCategoria().setSelectedIndex(0);
+            vistaArticulo.getCbProveedor().setSelectedIndex(0);
         }
     }
     public void saveTextFields(){
@@ -87,8 +110,8 @@ public class ArticuloController implements ActionListener{
         getObjArticulo().setCosto(Double.parseDouble(vistaArticulo.getTfCosto().getText()));
         getObjArticulo().setCaducidad(Date.valueOf(vistaArticulo.getDpCaducidad().getText()));
         getObjArticulo().setCodigo(vistaArticulo.getTfCodigo().getText());
-        getObjArticulo().setFK_Categoria(1); // Aun no cargamos las categorias, todas seran frituras de momento
-        getObjArticulo().setFK_Proveedor(1); // Aun no cargamos los proveedores
+        getObjArticulo().setFK_Categoria(cbCategoria.getSelectedIndex() + 1);
+        getObjArticulo().setFK_Proveedor(cbProveedor.getSelectedIndex() + 1); // Aun no cargamos los proveedores
     }
     
     private Articulo getArticuloSelect() throws SQLException{
@@ -127,8 +150,7 @@ public class ArticuloController implements ActionListener{
            vistaArticulo.getTfCodigo().getText().equals("") ||
            vistaArticulo.getTfCodigo().getText().length() < 13 ||
            vistaArticulo.getDpCaducidad().getText().equals("")){
-            
-            isEmpty = true;
+           isEmpty = true;
         }
         return isEmpty;
     }
@@ -186,6 +208,14 @@ public class ArticuloController implements ActionListener{
         btCancelar.setEnabled(false);
     }
     
+    private void categoriasPerformed(){
+        try {
+            new CategoriaView();
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticuloController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -199,6 +229,8 @@ public class ArticuloController implements ActionListener{
             guardarPerformed();
         else if (source == btCancelar)
             cancelarPerformed();
+        else if(source == btCategorias)
+            categoriasPerformed();
     }
 
     /**
@@ -233,5 +265,6 @@ public class ArticuloController implements ActionListener{
         vistaArticulo.getDpCaducidad().setEnabled(tfEdit);
         vistaArticulo.getTfCodigo().setEnabled(tfEdit);
         vistaArticulo.getCbCategoria().setEnabled(tfEdit);
+        vistaArticulo.getCbProveedor().setEnabled(tfEdit);
     }
 }

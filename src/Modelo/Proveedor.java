@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author Javicuc
  */
 public class Proveedor {
-    private int ID_Proveedor;
+    private int    ID_Proveedor;
     private String Nombre;
     private String Direccion;
     private String Telefono;
@@ -20,14 +20,13 @@ public class Proveedor {
 
     public Proveedor(int id, String nombre, String direccion, String telefono, String web) {
         this.ID_Proveedor = id;
-        this.Nombre = Nombre;
-        this.Direccion = Direccion;
-        this.Telefono = Telefono;
-        this.Web = web;
+        this.Nombre       = nombre;
+        this.Direccion    = direccion;
+        this.Telefono     = telefono;
+        this.Web          = web;
     }
     
     public Proveedor() {
-        this("","","","");
     }
 
     public Proveedor(String Nombre, String Direccion, String Telefono, String web) {
@@ -82,7 +81,7 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "Proveedor{" + "ID_Proveedor=" + ID_Proveedor + ", Nombre=" + Nombre + ", Direccion=" + Direccion + ", Telefono=" + Telefono + ", Web=" + Web + '}';
+        return ID_Proveedor + " : " + Nombre ;
     }
 
     /**

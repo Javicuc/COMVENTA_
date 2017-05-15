@@ -30,7 +30,7 @@ public class CategoriaDAO implements iCategoriaDAO{
     
     final String INSERT = "INSERT INTO " + Tabla.CATEGORIA + "(" + COLCATEGORIA.NOMBRE + ")" + " VALUES(?)";
     final String UPDATE = "UPDATE " + Tabla.CATEGORIA + " SET " + COLCATEGORIA.NOMBRE + " = ?" + " WHERE " + COLCATEGORIA.ID_CATEGORIA + " = ?";
-    final String GETALL = "SELECT * FROM " + Tabla.CATEGORIA + " ORDER BY " + COLCATEGORIA.NOMBRE;
+    final String GETALL = "SELECT * FROM " + Tabla.CATEGORIA + " ORDER BY " + COLCATEGORIA.ID_CATEGORIA;
     final String GETONE = "SELECT * FROM " + Tabla.CATEGORIA + " WHERE " + COLCATEGORIA.ID_CATEGORIA + " = ?"; 
     final String DELETE = "DELETE FROM " + Tabla.CATEGORIA + " WHERE " + COLCATEGORIA.ID_CATEGORIA + " = ?";
     final String GETALLORDERBY = "SELECT * FROM " + Tabla.CATEGORIA + " ORDER BY %s";
