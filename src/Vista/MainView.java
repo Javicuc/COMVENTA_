@@ -143,6 +143,11 @@ public class MainView extends javax.swing.JFrame {
         btReportes.setFocusable(false);
         btReportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btReportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btReportesActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btReportes);
 
         btCorte.setText("CORTE");
@@ -303,6 +308,16 @@ public class MainView extends javax.swing.JFrame {
         view.getContentPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
         panelViews.add(view.getContentPane(),BorderLayout.CENTER);    
     }//GEN-LAST:event_btVentasActionPerformed
+
+    private void btReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportesActionPerformed
+        ReportesView view = null;
+        view = new ReportesView();
+        panelViews.removeAll();
+        panelViews.updateUI();
+        view.getContentPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        panelViews.add(view.getContentPane(),BorderLayout.CENTER);    
+    
+    }//GEN-LAST:event_btReportesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBL_Icon;

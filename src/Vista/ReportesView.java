@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  *
  * @author javilubz
@@ -16,6 +21,7 @@ public class ReportesView extends javax.swing.JFrame {
      */
     public ReportesView() {
         initComponents();
+        setIcons();
     }
 
     /**
@@ -27,17 +33,118 @@ public class ReportesView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btPedidosReportes = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btArticulosReportes = new javax.swing.JButton();
+        btTicketsReportes = new javax.swing.JButton();
+        btVentasReportes = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btClientesReportes = new javax.swing.JButton();
+        btEmpleadosReportes = new javax.swing.JButton();
+        btProveedorReportes = new javax.swing.JButton();
+        btCategoriaReportes = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("REPORTES ARTICULOS");
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("REPORTES TICKETS");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("REPORTES PEDIDOS");
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("REPORTES VENTAS");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("REPORTES CATEGORIAS");
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("REPORTES PROVEEDORES");
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("REPORTES EMPLEADOS");
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("REPORTES CLIENTES");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 831, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btArticulosReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btPedidosReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btTicketsReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btVentasReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btClientesReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btEmpleadosReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btProveedorReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btCategoriaReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btArticulosReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btPedidosReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btTicketsReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btVentasReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btClientesReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEmpleadosReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btProveedorReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCategoriaReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -45,5 +152,107 @@ public class ReportesView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btArticulosReportes;
+    private javax.swing.JButton btCategoriaReportes;
+    private javax.swing.JButton btClientesReportes;
+    private javax.swing.JButton btEmpleadosReportes;
+    private javax.swing.JButton btPedidosReportes;
+    private javax.swing.JButton btProveedorReportes;
+    private javax.swing.JButton btTicketsReportes;
+    private javax.swing.JButton btVentasReportes;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcons() {
+        ImageIcon imgProd = new ImageIcon("Images/articulos.png");
+        btArticulosReportes.setIcon(imgProd);
+        ImageIcon imgTickets = new ImageIcon("Images/ticket.png");
+        btTicketsReportes.setIcon(imgTickets);
+        ImageIcon imgVentas = new ImageIcon("Images/venta.png");
+        btVentasReportes.setIcon(imgVentas);
+        ImageIcon imgClientes = new ImageIcon("Images/cliente.png");
+        btClientesReportes.setIcon(imgClientes);
+        ImageIcon imgProveedores = new ImageIcon("Images/proveedor.png");
+        btProveedorReportes.setIcon(imgProveedores);
+        ImageIcon imgEmpleados = new ImageIcon("Images/empleado.png");
+        btEmpleadosReportes.setIcon(imgEmpleados);
+        ImageIcon imgCategorias = new ImageIcon("Images/categoria.png");
+        btCategoriaReportes.setIcon(imgCategorias);
+        ImageIcon imgPedidos = new ImageIcon("Images/pedido.png");
+        btPedidosReportes.setIcon(imgPedidos);
+        
+    }
+
+    public JButton getBtCategoriaReportes() {
+        return btCategoriaReportes;
+    }
+
+    public void setBtCategoriaReportes(JButton btCategoriaReportes) {
+        this.btCategoriaReportes = btCategoriaReportes;
+    }
+
+    public JButton getBtClientesReportes() {
+        return btClientesReportes;
+    }
+
+    public void setBtClientesReportes(JButton btClientesReportes) {
+        this.btClientesReportes = btClientesReportes;
+    }
+
+    public JButton getBtEmpleadosReportes() {
+        return btEmpleadosReportes;
+    }
+
+    public void setBtEmpleadosReportes(JButton btEmpleadosReportes) {
+        this.btEmpleadosReportes = btEmpleadosReportes;
+    }
+
+    public JButton getBtPedidosReportes() {
+        return btPedidosReportes;
+    }
+
+    public void setBtPedidosReportes(JButton btPedidosReportes) {
+        this.btPedidosReportes = btPedidosReportes;
+    }
+
+    public JButton getBtProveedorReportes() {
+        return btProveedorReportes;
+    }
+
+    public void setBtProveedorReportes(JButton btProveedorReportes) {
+        this.btProveedorReportes = btProveedorReportes;
+    }
+
+    public JButton getBtTicketsReportes() {
+        return btTicketsReportes;
+    }
+
+    public void setBtTicketsReportes(JButton btTicketsReportes) {
+        this.btTicketsReportes = btTicketsReportes;
+    }
+
+    public JButton getBtVentasReportes() {
+        return btVentasReportes;
+    }
+
+    public void setBtVentasReportes(JButton btVentasReportes) {
+        this.btVentasReportes = btVentasReportes;
+    }
+
+    public JButton getBtArticulosReportes() {
+        return btArticulosReportes;
+    }
+
+    public void setBtArticulosReportes(JButton btArticulosReportes) {
+        this.btArticulosReportes = btArticulosReportes;
+    }
+    
+    
 }
