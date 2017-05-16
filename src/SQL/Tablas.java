@@ -28,6 +28,7 @@ public class Tablas {
         String ID_EMPLEADO = "ID_Empleado";
         String USUARIO     = "Usuario";
         String CLAVE       = "Clave";
+        String TIPO        = "Tipo";
     }
     interface ColumnasArticulo{
         String ID_ARTICULO  = "ID_Articulo";

@@ -6,6 +6,9 @@
 package Vista;
 
 import com.sun.glass.events.KeyEvent;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,7 +21,7 @@ public class AccesoView extends javax.swing.JFrame {
      */
     public AccesoView() {
         initComponents();
-        //setVisible(true);
+        setVisible(true);
         setLocationRelativeTo(null);
     }
 
@@ -32,16 +35,31 @@ public class AccesoView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        btnEntrar = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tfContraseña = new javax.swing.JPasswordField();
+        tfUsuario = new javax.swing.JTextField();
+        btnEntrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnEntrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("CONTRASEÑA:");
+
+        jLabel1.setText("USUARIO:");
+
+        tfContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfContraseñaKeyPressed(evt);
+            }
+        });
+
+        tfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfUsuarioKeyPressed(evt);
+            }
+        });
+
         btnEntrar.setText("ENTRAR");
         btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -49,27 +67,11 @@ public class AccesoView extends javax.swing.JFrame {
             }
         });
 
-        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtContraseñaKeyPressed(evt);
-            }
-        });
-
-        jLabel1.setText("USUARIO:");
-
-        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUsuarioKeyPressed(evt);
-            }
-        });
-
-        jLabel2.setText("CONTRASEÑA:");
-
-        jLayeredPane1.setLayer(btnEntrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtContraseña, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfContraseña, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnEntrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -77,16 +79,16 @@ public class AccesoView extends javax.swing.JFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsuario)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfUsuario)
+                            .addComponent(tfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -98,14 +100,13 @@ public class AccesoView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(tfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btnEntrar))
         );
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,7 +129,7 @@ public class AccesoView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
@@ -137,27 +138,55 @@ public class AccesoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            System.out.println("usuario key pressed");
+        }
+    }//GEN-LAST:event_tfUsuarioKeyPressed
+
+    private void tfContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfContraseñaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { 
+            System.out.println("pass key pressed");
+        }
+    }//GEN-LAST:event_tfContraseñaKeyPressed
+
     private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
-        /*Entrar*/
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { 
+            System.out.println("entrar key pressed");
+        }
     }//GEN-LAST:event_btnEntrarKeyPressed
 
-    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { /*Entrar*/ }
-    }//GEN-LAST:event_txtUsuarioKeyPressed
+    public JPasswordField getTFContraseña() {
+        return tfContraseña;
+    }
 
-    private void txtContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { /*Entrar*/ }
-    }//GEN-LAST:event_txtContraseñaKeyPressed
+    public void setTFContraseña(JPasswordField txtContraseña) {
+        this.tfContraseña = txtContraseña;
+    }
 
+    public JTextField getTFUsuario() {
+        return tfUsuario;
+    }
+
+    public void setTFUsuario(JTextField txtUsuario) {
+        this.tfUsuario = txtUsuario;
+    }
     
+    public JButton getBtnEntrar() {
+        return btnEntrar;
+    }
+
+    public void setBtnEntrar(JButton btnEntrar) {
+        this.btnEntrar = btnEntrar;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnEntrar;
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPasswordField txtContraseña;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JPasswordField tfContraseña;
+    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

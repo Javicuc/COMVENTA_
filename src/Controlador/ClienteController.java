@@ -200,7 +200,6 @@ public class ClienteController implements ActionListener{
             guardarActionPerformed();
         else if (source == btnCancelar)
             cancelarActionPerformed();
-        
     }
 
     public Cliente getUnObj() {

@@ -7,11 +7,16 @@ package Modelo.DAO;
 
 import Modelo.Acceso;
 import Modelo.InterfaceDAO.iAccesoDAO;
+import SQL.Tablas;
+import SQL.Tablas.COLACCESO;
+import SQL.Tablas.Tabla;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -23,11 +28,14 @@ public class AccesoDAO implements iAccesoDAO{
 
     private Connection con;
     
-    final String INSERT = "INSERT INTO Acceso (ID_Empleado,Usuario,Clave) VALUES(?,?,?)";
-    final String UPDATE = "UPDATE Acceso SET Usuario = ?, Clave = ?, WHERE ID_Empleado = ?";
-    final String GETALL = "SELECT * FROM Acceso ORDER BY Usuario";
-    final String GETONE = "SELECT * FROM Acceso WHERE ID_Empleado = ";
-    final String DELETE = "DELETE FROM Acceso WHERE ID_Empleado = ";
+    final String INSERT = "INSERT INTO "+Tabla.ACCESO+" (" 
+            +COLACCESO.USUARIO+","+COLACCESO.CLAVE+","+COLACCESO.TIPO+","+COLACCESO.ID_EMPLEADO+")"+"VALUES(?,?,?,?)";
+    final String UPDATE = "UPDATE "+Tabla.ACCESO+" SET "+COLACCESO.USUARIO+" = ?,"+COLACCESO.CLAVE+" = ?,"
+            +COLACCESO.TIPO+"= ?, WHERE "+COLACCESO.ID_EMPLEADO+" = ?";
+    final String GETALL = "SELECT * FROM "+Tabla.ACCESO+" ORDER BY "+COLACCESO.USUARIO;
+    //final String GETONE = "SELECT * FROM "+Tabla.ACCESO+" WHERE "+COLACCESO.ID_EMPLEADO+"= ?";
+    final String GETONE = "SELECT * FROM "+Tabla.ACCESO+" WHERE "+COLACCESO.USUARIO+"= ? AND "+ COLACCESO.CLAVE+"= ?";
+    final String DELETE = "DELETE FROM "+Tabla.ACCESO+" WHERE "+COLACCESO.ID_EMPLEADO+"= ?";
     
     public AccesoDAO(Connection con){
         this.con = con;
@@ -36,7 +44,23 @@ public class AccesoDAO implements iAccesoDAO{
     @Override
     public boolean crear(Acceso obj) throws SQLException {
         boolean insertar = false;
+        try {
+            
+            PreparedStatement ps = con.prepareStatement(INSERT);
+            ps.setString(1, obj.getUsuario());
+            ps.setString(2, obj.getClave());
+            ps.setString(3, obj.getTipo());
+            
+            if (!ps.execute()) {
+                JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente...");
+                insertar = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar...");
+            }
         
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
         return insertar;
     }
 
@@ -51,41 +75,107 @@ public class AccesoDAO implements iAccesoDAO{
     }
 
     @Override
-    public Acceso raadByID(int primaryKey) throws SQLException {
+    public Acceso readByID(int primaryKey) throws SQLException {
         Acceso acceso = new Acceso();
-       
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(GETONE);
+            ps.setInt(1, primaryKey);
+            rs = ps.executeQuery();
+            while (rs.next()) 
+                acceso = convertirRS(rs);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }    
+            }
+        }
         return acceso;
     }
 
     @Override
     public boolean update(Acceso obj) throws SQLException {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         boolean actualizar = false;
-        
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(UPDATE);
+            ps.setString(1, obj.getUsuario());
+            ps.setString(2, obj.getClave());
+            ps.setString(3, obj.getTipo());
+            if (!ps.execute()) {
+                JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente...");
+                actualizar = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar...");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la conexion " + e);
+        } finally {
+            if(ps != null)
+                try{
+                    ps.close();
+                }catch(SQLException e){
+                    throw new SQLException(e);
+                }
+        }
         return actualizar;
     }
 
     @Override
     public boolean delete(Acceso obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean eliminar = false;
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(DELETE);
+            //ps.setInt(1, obj.getID_Empleado());
+            if(ps.executeUpdate() != 0)
+                eliminar = true;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch(SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+        }
+        return eliminar;
     }
 
     @Override
     public boolean deleteByID(int primaryKey) throws SQLException {
         boolean eliminar = false;
-        try /*(Connection cn = con.conexion())*/ {
-            PreparedStatement ps = con.prepareCall(DELETE + String.valueOf(primaryKey));
-            
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que quiere eliminarlo?", "!", JOptionPane.YES_NO_OPTION) == 0) {
-                if (ps.execute()) {
-                    JOptionPane.showMessageDialog(null, "El usuario de elimino correctamente...");
-                    eliminar = true;
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(DELETE);
+            ps.setInt(1, primaryKey);
+            if(ps.executeUpdate() != 0)
+                eliminar = true;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch(SQLException e) {
+                    throw new SQLException(e);
                 }
             }
-            
-            con.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la conexion "+ex);
         }
         return eliminar;
     }
@@ -97,8 +187,40 @@ public class AccesoDAO implements iAccesoDAO{
 
     @Override
     public boolean alreadyExisting(Acceso obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean exist = false;
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(GETONE);
+            //ps.setInt(1, obj.getID_Empleado());
+            ps.setString(1, obj.getUsuario());
+            ps.setString(2, obj.getClave());
+            ResultSet rs = ps.executeQuery();
+            if(rs.first())
+                exist = true;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch(SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+        }
+        return exist;
     }
 
-   
+   private Acceso convertirRS(ResultSet rs) {
+        Acceso a = null;
+        try {
+            String usuario = rs.getString(COLACCESO.USUARIO);
+            String clave   = rs.getString(COLACCESO.CLAVE);
+            String tipo    = rs.getString(COLACCESO.TIPO);
+            a = new Acceso(usuario,clave,tipo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticuloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a;
+    }
 }

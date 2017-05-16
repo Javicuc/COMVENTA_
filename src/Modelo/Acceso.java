@@ -5,8 +5,11 @@
  */
 package Modelo;
 
-import java.util.Objects;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
+import java.util.Objects;
 /**
  *
  * @author Javicuc
@@ -14,17 +17,25 @@ import java.util.Objects;
 public class Acceso {
     private String Usuario;
     private String Clave;
+    private String Tipo;
 
-    public Acceso(int id, String usuario, String clave) {
+    public Acceso(int id, String usuario, String clave, String tipo) {
         
     }
+    
     public Acceso(){
-        
+        this("","","");
     }
 
     public Acceso(String Usuario, String Clave) {
         this.Usuario = Usuario;
-        this.Clave = Clave;
+        this.Clave = MD5(Clave);
+    }
+    
+    public Acceso(String Usuario, String Clave, String Tipo) {
+        this.Usuario = Usuario;
+        this.Clave = MD5(Clave);
+        this.Tipo = Tipo;
     }
 
     @Override
@@ -87,5 +98,35 @@ public class Acceso {
      */
     public void setClave(String Clave) {
         this.Clave = Clave;
+    }
+    
+    /**
+     * @return the Tipo
+     */
+    public String getTipo() {
+        return Tipo;
+    }
+
+    /**
+     * @param Tipo the Tipo to set
+     */
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
+    }
+    
+    private String MD5(String pass) {
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md5.digest(pass.getBytes());
+            BigInteger numero = new BigInteger(1, messageDigest);
+            String hashtext = numero.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
