@@ -147,14 +147,6 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btVenta">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NUEVA VENTA"/>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="verticalTextPosition" type="int" value="3"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="btProdComun">
               <Properties>
                 <Property name="text" type="java.lang.String" value="PRODUCTO COMUN"/>
@@ -166,6 +158,7 @@
             <Component class="javax.swing.JButton" name="btBuscarProd">
               <Properties>
                 <Property name="text" type="java.lang.String" value="BUSCAR PRODUCTO"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
@@ -174,14 +167,7 @@
             <Component class="javax.swing.JButton" name="btEliminarProd">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ELIMINAR PRODUCTO"/>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="verticalTextPosition" type="int" value="3"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btEliminarTicket">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ELIMINAR TICKET"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
@@ -367,6 +353,7 @@
         <Component class="javax.swing.JButton" name="btImprimir">
           <Properties>
             <Property name="text" type="java.lang.String" value="IMPRIMIR"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

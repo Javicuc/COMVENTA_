@@ -26,14 +26,16 @@ public class ArticuloDAO implements iArticuloDAO{
 
     private Connection con;
     
-    final String INSERT = "INSERT INTO " + Tabla.ARTICULO + "("+COLARTICULO.NOMBRE + ","+ COLARTICULO.DESCRIPCION 
-                           + "," + COLARTICULO.COSTO + "," + COLARTICULO.CADUCIDAD + "," + COLARTICULO.CODIGO + ","
-                           + COLARTICULO.FK_CATEGORIA + "," + COLARTICULO.FK_PROVEEDOR + ")" + " VALUES(?,?,?,?,?,?,?)";
-    final String UPDATE = "UPDATE " + Tabla.ARTICULO + " SET " + COLARTICULO.NOMBRE + " = ?," + COLARTICULO.DESCRIPCION
-                           + " = ?," + COLARTICULO.COSTO + " = ?," + COLARTICULO.CADUCIDAD + " = ?," + COLARTICULO.CODIGO
-                           + " = ?," + COLARTICULO.FK_CATEGORIA + " = ?," + COLARTICULO.FK_PROVEEDOR + " = ? WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
+    final String INSERT = "INSERT INTO " + Tabla.ARTICULO + "(" + COLARTICULO.NOMBRE + ", " + COLARTICULO.DESCRIPCION 
+                           + ", " + COLARTICULO.COSTO + ", " + COLARTICULO.CADUCIDAD + "," + COLARTICULO.CODIGO + ","
+                           + COLARTICULO.FK_CATEGORIA + ", " + COLARTICULO.FK_PROVEEDOR + ")" + " VALUES(?,?,?,?,?,?,?)";
+    final String UPDATE = "UPDATE " + Tabla.ARTICULO + " SET " + COLARTICULO.NOMBRE + " = ?, " + COLARTICULO.DESCRIPCION
+                           + " = ?, " + COLARTICULO.COSTO + " = ?, " + COLARTICULO.CADUCIDAD + " = ?, " + COLARTICULO.CODIGO
+                           + " = ?, " + COLARTICULO.FK_CATEGORIA + " = ?, " + COLARTICULO.FK_PROVEEDOR + " = ? WHERE " 
+                           + COLARTICULO.ID_ARTICULO + " = ?";
     final String GETALL = "SELECT * FROM " + Tabla.ARTICULO;
     final String GETONE = "SELECT * FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
+    final String GETONECOD = "SELECT * FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.CODIGO + " = ?";
     final String DELETE = "DELETE FROM " + Tabla.ARTICULO + " WHERE " + COLARTICULO.ID_ARTICULO + " = ?";
     final String GETALLORDERBY = "SELECT * FROM " + Tabla.ARTICULO + " ORDER BY %s";
             
@@ -109,7 +111,7 @@ public class ArticuloDAO implements iArticuloDAO{
     }
 
     @Override
-    public Articulo raadByID(int primaryKey) throws SQLException {
+    public Articulo readByID(int primaryKey) throws SQLException {
         Articulo art = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -154,8 +156,8 @@ public class ArticuloDAO implements iArticuloDAO{
             ps.setInt(6, obj.getFK_Categoria());
             ps.setInt(7, obj.getFK_Proveedor());
             ps.setInt(8, obj.getID_Articulo());
-            if(ps.executeUpdate() != 0)
-                actualizar = true;
+            ps.executeUpdate();
+            actualizar = true;
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {
@@ -225,4 +227,68 @@ public class ArticuloDAO implements iArticuloDAO{
         }
         return articulo;
     }
+    
+    public Articulo readByCodigo(String codigo) throws SQLException{
+        Articulo obj = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            ps = con.prepareStatement(GETONECOD);
+            ps.setString(1, codigo);
+            rs = ps.executeQuery();
+            while(rs.next())
+                obj = convertirRS(rs);
+        } catch (SQLException e){
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }    
+            }
+        }
+        return obj;
+    }
+    public List<Articulo> Buscar(String busqueda) throws SQLException{
+        final String BUSCAR = "SELECT *  FROM articulo WHERE Nombre LIKE %" + busqueda + "% AND Descripcion LIKE %" + busqueda +"%";
+        List<Articulo> list = new ArrayList<Articulo>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(BUSCAR);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Articulo art = convertirRS(rs);
+                list.add(art);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }
+            }
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new SQLException(e);
+                }    
+            }
+        }
+        return list;
+    }
+    
 }

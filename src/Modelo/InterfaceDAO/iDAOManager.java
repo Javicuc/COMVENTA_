@@ -24,5 +24,4 @@ public interface iDAOManager {
     JornadasTrabajoDAO getJornadasTrabajoDAO();
     PedidoDAO getPedidoDAO();
     ProveedorDAO getProveedorDAO();
-    
 }

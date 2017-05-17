@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -14,47 +15,24 @@ import java.util.Objects;
  */
 public class Compra {
     private int ID_Compra;
-    private Date Fecha;
+    private Timestamp Fecha;
 
-    public Compra(int id, Date fecha) {
-        
-    }
-    public Compra(){
-        
+    public Compra(int ID_Compra, Timestamp Fecha) {
+        this.ID_Compra = ID_Compra;
+        this.Fecha = Fecha;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 47 * hash + this.ID_Compra;
-        hash = 47 * hash + Objects.hashCode(this.Fecha);
-        return hash;
+    public Compra() {
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Compra other = (Compra) obj;
-        if (this.ID_Compra != other.ID_Compra) {
-            return false;
-        }
-        if (!Objects.equals(this.Fecha, other.Fecha)) {
-            return false;
-        }
-        return true;
+    public Compra(Timestamp Fecha) {
+        this.Fecha = Fecha;
     }
 
+    
     @Override
     public String toString() {
-        return "Compra{" + "ID_Compra=" + ID_Compra + ", Fecha=" + Fecha + '}';
+        return ID_Compra + " : " + Fecha;
     }
 
     /**
@@ -71,17 +49,12 @@ public class Compra {
         this.ID_Compra = ID_Compra;
     }
 
-    /**
-     * @return the Fecha
-     */
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return Fecha;
     }
 
-    /**
-     * @param Fecha the Fecha to set
-     */
-    public void setFecha(Date Fecha) {
+    public void setFecha(Timestamp Fecha) {
         this.Fecha = Fecha;
     }
+    
 }

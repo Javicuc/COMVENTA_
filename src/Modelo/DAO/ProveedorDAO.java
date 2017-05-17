@@ -24,9 +24,9 @@ public class ProveedorDAO implements iProveedorDAO{
 
     private Connection con;
     
-    final String INSERT = "INSERT INTO " + Tabla.PROVEEDOR + " (" + COLPROVEEDOR.ID_PROVEEDOR + ", " +
+    final String INSERT = "INSERT INTO " + Tabla.PROVEEDOR + " (" +
             COLPROVEEDOR.NOMBRE + ", " + COLPROVEEDOR.DIRECCION +", " + COLPROVEEDOR.TELEFONO + ", " + 
-            COLPROVEEDOR.WEB + ")" + " VALUES(?,?,?,?,?)";
+            COLPROVEEDOR.WEB + ")" + " VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE " + Tabla.PROVEEDOR + " SET " + COLPROVEEDOR.NOMBRE + " = ?, " +
             COLPROVEEDOR.DIRECCION + " = ?, " + COLPROVEEDOR.TELEFONO + " = ?, " + COLPROVEEDOR.WEB +
             " = ? WHERE " + COLPROVEEDOR.ID_PROVEEDOR + " = ?";
@@ -44,11 +44,10 @@ public class ProveedorDAO implements iProveedorDAO{
         try {
             
             PreparedStatement ps = con.prepareStatement(INSERT);
-            ps.setString(1, String.valueOf(obj.hashCode()));
-            ps.setString(2, obj.getNombre());
-            ps.setString(3, obj.getDireccion());
-            ps.setString(4, obj.getTelefono());
-            ps.setString(5, obj.getWeb());
+            ps.setString(1, obj.getNombre());
+            ps.setString(2, obj.getDireccion());
+            ps.setString(3, obj.getTelefono());
+            ps.setString(4, obj.getWeb());
             
             if (!ps.execute()) {
                 JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente...");

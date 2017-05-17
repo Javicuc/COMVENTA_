@@ -10,26 +10,53 @@ package Modelo;
  * @author Javicuc
  */
 public class DetalleCompra {
+    
+    private int ID_DetalleCompra;
     private int FK_Compra;
     private int FK_Articulo;
-    private int NoArticulo;
     private int Cantidad;
     private double Importe;
     private int FK_Empleado;
     private int FK_Cliente;
 
-    public DetalleCompra(int fk_compra, int fk_articulo, int noArticulo, int cantidad, double importe, int fk_empleado, int fk_cliente) {
+    public DetalleCompra(int ID_DetalleCompra, int FK_Compra, int FK_Articulo, int Cantidad, double Importe, int FK_Empleado, int FK_Cliente) {
+        this.ID_DetalleCompra = ID_DetalleCompra;
+        this.FK_Compra = FK_Compra;
+        this.FK_Articulo = FK_Articulo;
+        this.Cantidad = Cantidad;
+        this.Importe = Importe;
+        this.FK_Empleado = FK_Empleado;
+        this.FK_Cliente = FK_Cliente;
+    }
+
+    public DetalleCompra(int FK_Compra, int FK_Articulo, int Cantidad, double Importe, int FK_Empleado, int FK_Cliente) {
+        this.FK_Compra = FK_Compra;
+        this.FK_Articulo = FK_Articulo;
+        this.Cantidad = Cantidad;
+        this.Importe = Importe;
+        this.FK_Empleado = FK_Empleado;
+        this.FK_Cliente = FK_Cliente;
+    }
+
+    public DetalleCompra() {
+    }
+
+    public DetalleCompra(int FK_Compra, int FK_Articulo, int Cantidad, double Importe) {
+        this.FK_Compra = FK_Compra;
+        this.FK_Articulo = FK_Articulo;
+        this.Cantidad = Cantidad;
+        this.Importe = Importe;
+        this.FK_Empleado = 2;
+        this.FK_Cliente  = 2;
+    }
+
     
-    }
-    public DetalleCompra(){
-        
-    }
 
     @Override
     public String toString() {
-        return "DetalleCompra{" + "FK_Compra=" + FK_Compra + ", FK_Articulo=" + FK_Articulo + ", NoArticulo=" + NoArticulo + ", Cantidad=" + Cantidad + ", Importe=" + Importe + ", FK_Empleado=" + FK_Empleado + ", FK_Cliente=" + FK_Cliente + '}';
+        return ID_DetalleCompra + "Ticket: " + FK_Compra;
     }
-
+    
     /**
      * @return the FK_Compra
      */
@@ -57,21 +84,7 @@ public class DetalleCompra {
     public void setFK_Articulo(int FK_Articulo) {
         this.FK_Articulo = FK_Articulo;
     }
-
-    /**
-     * @return the NoArticulo
-     */
-    public int getNoArticulo() {
-        return NoArticulo;
-    }
-
-    /**
-     * @param NoArticulo the NoArticulo to set
-     */
-    public void setNoArticulo(int NoArticulo) {
-        this.NoArticulo = NoArticulo;
-    }
-
+    
     /**
      * @return the Cantidad
      */
@@ -126,6 +139,63 @@ public class DetalleCompra {
      */
     public void setFK_Cliente(int FK_Cliente) {
         this.FK_Cliente = FK_Cliente;
+    }
+
+    public int getID_DetalleCompra() {
+        return ID_DetalleCompra;
+    }
+
+    public void setID_DetalleCompra(int ID_DetalleCompra) {
+        this.ID_DetalleCompra = ID_DetalleCompra;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.ID_DetalleCompra;
+        hash = 97 * hash + this.FK_Compra;
+        hash = 97 * hash + this.FK_Articulo;
+        hash = 97 * hash + this.Cantidad;
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.Importe) ^ (Double.doubleToLongBits(this.Importe) >>> 32));
+        hash = 97 * hash + this.FK_Empleado;
+        hash = 97 * hash + this.FK_Cliente;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetalleCompra other = (DetalleCompra) obj;
+        if (this.ID_DetalleCompra != other.ID_DetalleCompra) {
+            return false;
+        }
+        if (this.FK_Compra != other.FK_Compra) {
+            return false;
+        }
+        if (this.FK_Articulo != other.FK_Articulo) {
+            return false;
+        }
+        if (this.Cantidad != other.Cantidad) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.Importe) != Double.doubleToLongBits(other.Importe)) {
+            return false;
+        }
+        if (this.FK_Empleado != other.FK_Empleado) {
+            return false;
+        }
+        if (this.FK_Cliente != other.FK_Cliente) {
+            return false;
+        }
+        return true;
     }
     
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListaProductos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListaProductos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
      articulo.`Nombre` AS Producto,
      articulo.`Descripcion` AS Descripcion,
@@ -19,14 +19,21 @@
      articulo.`ID_Articulo` AS articulo_ID_Articulo,
      proveedor.`ID_Proveedor` AS proveedor_ID_Proveedor
 FROM
-     `proveedor` proveedor INNER JOIN `articulo` articulo ON proveedor.`ID_Proveedor` = articulo.`FK_Proveedor`]]>
+     `proveedor` proveedor INNER JOIN `articulo` articulo ON proveedor.`ID_Proveedor` = articulo.`FK_Proveedor` ORDER BY proveedor.ID_Proveedor]]>
 	</queryString>
-	<field name="Proveedor" class="java.lang.String"/>
 	<field name="Producto" class="java.lang.String"/>
+	<field name="Descripcion" class="java.lang.String"/>
 	<field name="Precio" class="java.math.BigDecimal"/>
 	<field name="Caducidad" class="java.sql.Date"/>
-	<field name="Descripcion" class="java.lang.String"/>
 	<field name="Codigo" class="java.lang.String"/>
+	<field name="articulo_FK_Categoria" class="java.lang.Integer"/>
+	<field name="articulo_FK_Proveedor" class="java.lang.Integer"/>
+	<field name="Proveedor" class="java.lang.String"/>
+	<field name="Direccion" class="java.lang.String"/>
+	<field name="Telefono" class="java.lang.String"/>
+	<field name="Web" class="java.lang.String"/>
+	<field name="articulo_ID_Articulo" class="java.lang.Integer"/>
+	<field name="proveedor_ID_Proveedor" class="java.lang.Integer"/>
 	<group name="Proveedor">
 		<groupExpression><![CDATA[$F{Proveedor}]]></groupExpression>
 		<groupHeader>
@@ -42,8 +49,8 @@ FROM
 					<textFieldExpression class="java.lang.String"><![CDATA[$F{Proveedor}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="1" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6"/>
-					<textElement>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement verticalAlignment="Middle">
 						<font size="12"/>
 					</textElement>
 					<text><![CDATA[Proveedor]]></text>

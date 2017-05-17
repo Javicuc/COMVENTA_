@@ -22,6 +22,7 @@ public class ClienteTableModel extends AbstractTableModel{
     private ClienteDAO objDAO;
     private List<Cliente> data = new ArrayList<>();
     
+    
     public ClienteTableModel(ClienteDAO cDAO){
         this.objDAO = cDAO;
     }

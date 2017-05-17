@@ -75,6 +75,7 @@ public class ArticuloController implements ActionListener{
         this.btGuardar.addActionListener(this);
         this.btCancelar.addActionListener(this);
         this.btCategorias.addActionListener(this);
+        
         this.tableArticulos.getSelectionModel().addListSelectionListener(c ->{
             boolean isSelect = (tableArticulos.getSelectedRow() != -1);
             btModificar.setEnabled(isSelect);
@@ -112,13 +113,13 @@ public class ArticuloController implements ActionListener{
         getObjArticulo().setCosto(Double.parseDouble(vistaArticulo.getTfCosto().getText()));
         getObjArticulo().setCaducidad(Date.valueOf(vistaArticulo.getDpCaducidad().getText()));
         getObjArticulo().setCodigo(vistaArticulo.getTfCodigo().getText());
-        getObjArticulo().setFK_Categoria(cbCategoria.getSelectedIndex() + 1);
-        getObjArticulo().setFK_Proveedor(cbProveedor.getSelectedIndex() + 1); // Aun no cargamos los proveedores
+        getObjArticulo().setFK_Categoria(Integer.valueOf(cbCategoria.getSelectedItem().toString().replaceAll("[^\\d]", "")));
+        getObjArticulo().setFK_Proveedor(Integer.valueOf(cbProveedor.getSelectedItem().toString().replaceAll("[^\\d]", "")));
     }
     
     private Articulo getArticuloSelect() throws SQLException{
         int select = (int) tableArticulos.getValueAt(tableArticulos.getSelectedRow(),0);
-        return managerArticulo.raadByID(select);
+        return managerArticulo.readByID(select);
     }
     
     private void modificarPerformed(){
@@ -148,9 +149,9 @@ public class ArticuloController implements ActionListener{
         boolean isEmpty = false;
         if(vistaArticulo.getTfNombre().getText().equals("") || 
            vistaArticulo.getTfCosto().getText().equals("") || 
-           Double.parseDouble(vistaArticulo.getTfCosto().getText())<= 0 ||
+           Double.parseDouble(vistaArticulo.getTfCosto().getText()) <= 0 ||
            vistaArticulo.getTfCodigo().getText().equals("") ||
-           vistaArticulo.getTfCodigo().getText().length() < 13 ||
+           vistaArticulo.getTfCodigo().getText().length() < 12 ||
            vistaArticulo.getDpCaducidad().getText().equals("")){
            isEmpty = true;
         }
@@ -176,10 +177,12 @@ public class ArticuloController implements ActionListener{
         }
     }
     private void guardarPerformed(){ 
+        System.out.println(isEmpty());
         if(!isEmpty()){
             try {
                 saveTextFields();
                 Articulo temp = getObjArticulo();
+                System.out.println(temp.toString());
                 if(temp.getID_Articulo() == 0)
                     managerArticulo.crear(temp);
                 else{

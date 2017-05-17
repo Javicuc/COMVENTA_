@@ -6,6 +6,8 @@
 package Modelo.InterfaceDAO;
 
 import Modelo.DetalleCompra;
+import Modelo.Ticket;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public interface iDetalleCompraDAO {
 
     public List<DetalleCompra> readAll() throws SQLException;
 
-    public List<DetalleCompra> readAllForInput(String searchValue) throws SQLException;
+    public List<Ticket> readAllForInput(int searchValue) throws SQLException;
 
     public DetalleCompra raadByID(int primaryKey) throws SQLException;
 

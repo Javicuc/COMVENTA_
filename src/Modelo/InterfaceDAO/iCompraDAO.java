@@ -19,7 +19,7 @@ public interface iCompraDAO {
 
     public List<Compra> readAll() throws SQLException;
 
-    public List<Compra> readAllForInput(String searchValue) throws SQLException;
+    public List<Compra> readAllForInput(int searchValue) throws SQLException;
 
     public Compra raadByID(int primaryKey) throws SQLException;
 

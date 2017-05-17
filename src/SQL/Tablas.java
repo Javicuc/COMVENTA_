@@ -28,6 +28,7 @@ public class Tablas {
         String ID_EMPLEADO = "ID_Empleado";
         String USUARIO     = "Usuario";
         String CLAVE       = "Clave";
+        String TIPO        = "Tipo";
     }
     interface ColumnasArticulo{
         String ID_ARTICULO  = "ID_Articulo";
@@ -55,20 +56,21 @@ public class Tablas {
         String FECHA     = "Fecha";
     }
     interface ColumnasDetalleCompra{
-        String FK_COMPRA   = "FK_Compra";
-        String FK_ARTICULO = "FK_Articulo";
-        String NOARTICULO  = "NoArticulo";
-        String CANTIDAD    = "Cantidad";
-        String IMPORTE     = "Importe";
-        String FK_EMPLEADO = "FK_Empleado";
-        String FK_CLIENTE  = "FK_Cliente";
+        String ID_DETALLECOMPRA = "ID_DetalleCompra";
+        String FK_COMPRA        = "FK_Compra";
+        String FK_ARTICULO      = "FK_Articulo";
+        String CANTIDAD         = "Cantidad";
+        String IMPORTE          = "Importe";
+        String FK_EMPLEADO      = "FK_Empleado";
+        String FK_CLIENTE       = "FK_Cliente";
     }
     interface ColumnasDetallePedido{
-        String FK_PEDIDO    = "FK_Pedido";
-        String FK_ARTICULO  = "FK_Articulo";
-        String CANTIDAD     = "Cantidad";
-        String COSTO        = "Costo";
-        String FK_CATEGORIA = "FK_Categoria";
+        String ID_DETALLEPEDIDO = "ID_DetallePedido";
+        String FK_PEDIDO        = "FK_Pedido";
+        String FK_ARTICULO      = "FK_Articulo";
+        String CANTIDAD         = "Cantidad";
+        String COSTO            = "Costo";
+        String FK_CATEGORIA     = "FK_Categoria";
     }
     interface ColumnasEmpleado{
         String ID_EMPLEADO = "ID_Empleado";

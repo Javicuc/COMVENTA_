@@ -105,6 +105,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JButton" name="btPedidosReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPedidosReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -125,10 +128,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btArticulosReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btArticulosReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btTicketsReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btTicketsReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btVentasReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVentasReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -137,12 +149,24 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btClientesReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btClientesReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btEmpleadosReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEmpleadosReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btProveedorReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btProveedorReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btCategoriaReportes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCategoriaReportesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>

@@ -5,10 +5,32 @@
  */
 package Vista;
 
+import SQL.BD_Conexion;
+import Vista.Reportes.frmClientes;
+import Vista.Reportes.frmEmpleados;
+import Vista.Reportes.frmPedidos;
+import Vista.Reportes.frmProdsProv;
+import Vista.Reportes.frmProdsCat;
+import Vista.Reportes.frmProdsProv;
+import Vista.Reportes.frmTickets;
+import Vista.Reportes.frmVentas;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -16,11 +38,11 @@ import javax.swing.JButton;
  */
 public class ReportesView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ReportesView
-     */
+    private Connection con;
+    
     public ReportesView() {
         initComponents();
+        this.con = BD_Conexion.getInstance();
         setIcons();
     }
 
@@ -52,6 +74,12 @@ public class ReportesView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btPedidosReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPedidosReportesActionPerformed(evt);
+            }
+        });
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("REPORTES ARTICULOS");
 
@@ -61,8 +89,50 @@ public class ReportesView extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("REPORTES PEDIDOS");
 
+        btArticulosReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btArticulosReportesActionPerformed(evt);
+            }
+        });
+
+        btTicketsReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTicketsReportesActionPerformed(evt);
+            }
+        });
+
+        btVentasReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVentasReportesActionPerformed(evt);
+            }
+        });
+
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("REPORTES VENTAS");
+
+        btClientesReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClientesReportesActionPerformed(evt);
+            }
+        });
+
+        btEmpleadosReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEmpleadosReportesActionPerformed(evt);
+            }
+        });
+
+        btProveedorReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btProveedorReportesActionPerformed(evt);
+            }
+        });
+
+        btCategoriaReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCategoriaReportesActionPerformed(evt);
+            }
+        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("REPORTES CATEGORIAS");
@@ -149,6 +219,69 @@ public class ReportesView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCategoriaReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCategoriaReportesActionPerformed
+        try {    
+            new frmProdsCat(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportesView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btCategoriaReportesActionPerformed
+
+    private void btArticulosReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArticulosReportesActionPerformed
+        File miDir = new File (".");
+        try{
+            String archivo = miDir.getCanonicalPath() + "/src/Vista/Reportes/Productos.jasper";
+            JasperPrint  jp = JasperFillManager.fillReport(archivo,null,con);
+            JasperViewer jv = new JasperViewer(jp,false);
+            jv.setVisible(true);
+            jv.setTitle("Productos");
+        } catch (JRException ex) {
+            Logger.getLogger(frmProdsCat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(frmProdsCat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btArticulosReportesActionPerformed
+
+    private void btPedidosReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPedidosReportesActionPerformed
+        try {
+            new frmPedidos(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportesView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btPedidosReportesActionPerformed
+
+    private void btTicketsReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTicketsReportesActionPerformed
+        
+    }//GEN-LAST:event_btTicketsReportesActionPerformed
+
+    private void btVentasReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVentasReportesActionPerformed
+        new frmVentas(con);
+    }//GEN-LAST:event_btVentasReportesActionPerformed
+
+    private void btClientesReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClientesReportesActionPerformed
+        try {
+            new frmClientes(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportesView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btClientesReportesActionPerformed
+
+    private void btEmpleadosReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmpleadosReportesActionPerformed
+        try {
+            new frmEmpleados(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportesView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btEmpleadosReportesActionPerformed
+
+    private void btProveedorReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProveedorReportesActionPerformed
+        try {
+            new frmProdsProv(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportesView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btProveedorReportesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

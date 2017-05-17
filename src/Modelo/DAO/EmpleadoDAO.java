@@ -197,8 +197,6 @@ public class EmpleadoDAO implements iEmpleadoDAO{
                     eliminar = true;
                 }
             }
-            
-            con.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en la conexion "+ex);
         }
