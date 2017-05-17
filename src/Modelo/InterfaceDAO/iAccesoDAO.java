@@ -20,7 +20,7 @@ public interface iAccesoDAO {
 
     public List<Acceso> readAllForInput(String searchValue) throws SQLException;
 
-    public Acceso readByID(int primaryKey) throws SQLException;
+    public Acceso readByID(Acceso obj) throws SQLException;
 
     public boolean update(Acceso obj) throws SQLException;
 

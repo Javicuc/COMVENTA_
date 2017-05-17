@@ -15,13 +15,44 @@ import java.util.Objects;
  * @author Javicuc
  */
 public class Acceso {
+    private int ID_Acceso;
     private String Usuario;
     private String Clave;
     private String Tipo;
+    private int FK_Empleado;
 
-    public Acceso(int id, String usuario, String clave, String tipo) {
-        
+    public int getFK_Empleado() {
+        return FK_Empleado;
     }
+
+    public void setFK_Empleado(int FK_Empleado) {
+        this.FK_Empleado = FK_Empleado;
+    }
+
+    public Acceso(String Usuario, String Clave, String Tipo, int FK_Empleado) {
+        this.Usuario = Usuario;
+        this.Clave = Clave;
+        this.Tipo = Tipo;
+        this.FK_Empleado = FK_Empleado;
+    }
+
+    public int getID_Acceso() {
+        return ID_Acceso;
+    }
+
+    public void setID_Acceso(int ID_Acceso) {
+        this.ID_Acceso = ID_Acceso;
+    }
+
+    public Acceso(int ID_Acceso, String Usuario, String Clave, String Tipo, int FK_Empleado) {
+        this.ID_Acceso = ID_Acceso;
+        this.Usuario = Usuario;
+        this.Clave = Clave;
+        this.Tipo = Tipo;
+        this.FK_Empleado = FK_Empleado;
+    }
+    
+    
     
     public Acceso(){
         this("","","");

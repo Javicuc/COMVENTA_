@@ -33,8 +33,8 @@ public class AccesoDAO implements iAccesoDAO{
     final String UPDATE = "UPDATE "+Tabla.ACCESO+" SET "+COLACCESO.USUARIO+" = ?,"+COLACCESO.CLAVE+" = ?,"
             +COLACCESO.TIPO + " = ?, WHERE " + COLACCESO.ID_EMPLEADO + " = ?";
     final String GETALL = "SELECT * FROM " + Tabla.ACCESO + " ORDER BY " + COLACCESO.USUARIO;
-    final String GETONE = "SELECT * FROM "+Tabla.ACCESO+" WHERE " + COLACCESO.USUARIO + " = ? AND " + COLACCESO.CLAVE + " = ?";
-    final String DELETE = "DELETE FROM "+Tabla.ACCESO+" WHERE " + COLACCESO.ID_EMPLEADO + " = ?";
+    final String GETONE = "SELECT * FROM " + Tabla.ACCESO+" WHERE " + COLACCESO.USUARIO + " = ? AND " + COLACCESO.CLAVE + " = ?";
+    final String DELETE = "DELETE FROM " + Tabla.ACCESO+" WHERE " + COLACCESO.ID_EMPLEADO + " = ?";
     
     public AccesoDAO(Connection con){
         this.con = con;
@@ -49,6 +49,7 @@ public class AccesoDAO implements iAccesoDAO{
             ps.setString(1, obj.getUsuario());
             ps.setString(2, obj.getClave());
             ps.setString(3, obj.getTipo());
+            ps.setInt(4, obj.getFK_Empleado());
             
             if (!ps.execute()) {
                 JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente...");
@@ -74,13 +75,14 @@ public class AccesoDAO implements iAccesoDAO{
     }
 
     @Override
-    public Acceso readByID(int primaryKey) throws SQLException {
+    public Acceso readByID(Acceso obj) throws SQLException {
         Acceso acceso = new Acceso();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             ps = con.prepareStatement(GETONE);
-            ps.setInt(1, primaryKey);
+            ps.setString(1, obj.getUsuario());
+            ps.setString(2, obj.getClave());
             rs = ps.executeQuery();
             while (rs.next()) 
                 acceso = convertirRS(rs);
@@ -213,10 +215,12 @@ public class AccesoDAO implements iAccesoDAO{
    private Acceso convertirRS(ResultSet rs) {
         Acceso a = null;
         try {
+            int    idAcce  = rs.getInt("ID_Acceso");
             String usuario = rs.getString(COLACCESO.USUARIO);
             String clave   = rs.getString(COLACCESO.CLAVE);
             String tipo    = rs.getString(COLACCESO.TIPO);
-            a = new Acceso(usuario,clave,tipo);
+            int    idEmp   = rs.getInt(COLACCESO.ID_EMPLEADO);
+            a = new Acceso(idAcce,usuario,clave,tipo,idEmp);
         } catch (SQLException ex) {
             Logger.getLogger(ArticuloDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

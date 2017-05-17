@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.CompraController;
+import Modelo.Empleado;
 import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -18,11 +19,13 @@ import javax.swing.JTextField;
 public class VentasView extends javax.swing.JFrame {
 
     private CompraController controller;
+    private Empleado empActual;
             
-    public VentasView() throws SQLException {
+    public VentasView(Empleado actual) throws SQLException {
         initComponents();
         this.setResizable(false);
-        this.controller = new CompraController(this);
+        this.empActual = actual;
+        this.controller = new CompraController(this,getEmpActual());
     }
 
     @SuppressWarnings("unchecked")
@@ -448,6 +451,14 @@ public class VentasView extends javax.swing.JFrame {
 
     public void setTfTotalTabla(JTextField tfTotalTabla) {
         this.tfTotalTabla = tfTotalTabla;
+    }
+
+    public Empleado getEmpActual() {
+        return empActual;
+    }
+
+    public void setEmpActual(Empleado empActual) {
+        this.empActual = empActual;
     }
 
     

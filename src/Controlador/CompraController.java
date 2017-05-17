@@ -8,6 +8,7 @@ import Modelo.DAO.CompraDAO;
 import Modelo.DAO.DAOManager;
 import Modelo.DAO.DetalleCompraDAO;
 import Modelo.DetalleCompra;
+import Modelo.Empleado;
 import Modelo.Ticket;
 import SQL.BD_Conexion;
 import Vista.Reportes.frmProdsCat;
@@ -42,6 +43,7 @@ public class CompraController implements ActionListener{
     private CompraDAO        compraManger;
     private DetalleCompraDAO detalleManager;
     private ArticuloDAO      articuloManager;
+    private Empleado         empleadoEnCaja;
     private boolean tfEdit;
     private int cantidad;
             
@@ -67,12 +69,12 @@ public class CompraController implements ActionListener{
     private JTextField tfTotalTabla;
     private CompraTableModel compraTableModel;
     
-    public CompraController(VentasView view) throws SQLException{
+    public CompraController(VentasView view, Empleado actual) throws SQLException{
         this.vistaVentas     = view;
         this.articuloManager = new DAOManager().getArticuloDAO();
         this.compraManger    = new DAOManager().getCompraDAO();
         this.detalleManager  = new DAOManager().getDetalleCompraDAO();
-        
+        this.empleadoEnCaja  = actual;
         
         this.compraTableModel = new CompraTableModel(detalleManager);
         this.tablaTicket      = vistaVentas.getTablaTicket();
@@ -124,7 +126,7 @@ public class CompraController implements ActionListener{
                 }
                 this.cantidad = 1;
                 objCompra  = compraManger.getLast();
-                objDetalle = new DetalleCompra(objCompra.getID_Compra(), objArticulo.getID_Articulo(), cantidad, objArticulo.getCosto() * 1);
+                objDetalle = new DetalleCompra(objCompra.getID_Compra(), objArticulo.getID_Articulo(), cantidad, objArticulo.getCosto() * 1,empleadoEnCaja.getID_Empleado(),2);
                 detalleManager.crear(objDetalle);
                 this.compraTableModel.updateTable(objCompra.getID_Compra());
                 this.compraTableModel.fireTableDataChanged();

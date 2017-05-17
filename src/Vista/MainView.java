@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.Empleado;
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -19,12 +20,14 @@ import javax.swing.JLabel;
  */
 public class MainView extends javax.swing.JFrame {
 
-    public MainView() {
+    private Empleado empleadoActual; 
+    
+    public MainView(Empleado actual) {
         ImageIcon img = new ImageIcon("Images/logo.png");
         setUndecorated(true);
         setResizable(true);
         setVisible(true);
-        
+        this.empleadoActual = actual;
         initComponents();
         
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -35,6 +38,7 @@ public class MainView extends javax.swing.JFrame {
         LBL_Icon.setIcon(img);
         LBL_Icon.setHorizontalAlignment(JLabel.CENTER);
         LBL_Icon.setVerticalAlignment(JLabel.CENTER);
+        lblUser.setText(getEmpleadoActual().getNombre());
         
     }
 
@@ -295,14 +299,15 @@ public class MainView extends javax.swing.JFrame {
     private void btVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVentasActionPerformed
         VentasView view = null;
         try {
-            view = new VentasView();
+            view = new VentasView(getEmpleadoActual());
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
         panelViews.removeAll();
         panelViews.updateUI();
         view.getContentPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
-        panelViews.add(view.getContentPane(),BorderLayout.CENTER);    
+        panelViews.add(view.getContentPane(),BorderLayout.CENTER);
+        view.setEmpActual(empleadoActual);
     }//GEN-LAST:event_btVentasActionPerformed
 
     private void btReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportesActionPerformed
@@ -314,6 +319,14 @@ public class MainView extends javax.swing.JFrame {
         panelViews.add(view.getContentPane(),BorderLayout.CENTER);    
     
     }//GEN-LAST:event_btReportesActionPerformed
+
+    public Empleado getEmpleadoActual() {
+        return empleadoActual;
+    }
+
+    public void setEmpleadoActual(Empleado empleadoActual) {
+        this.empleadoActual = empleadoActual;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBL_Icon;

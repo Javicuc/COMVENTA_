@@ -3,6 +3,8 @@ package Controlador;
 import Modelo.Acceso;
 import Modelo.DAO.AccesoDAO;
 import Modelo.DAO.DAOManager;
+import Modelo.DAO.EmpleadoDAO;
+import Modelo.Empleado;
 import Vista.AccesoView;
 import Vista.MainView;
 import java.awt.event.ActionEvent;
@@ -27,6 +29,7 @@ public class AccesoController implements ActionListener {
     private Acceso      unObj;
     private AccesoDAO   objDAO;
     private AccesoView  objVista;
+    private EmpleadoDAO empDAO;
     
     //private JLabel btnEntra;
     private JButton btnEntrar;
@@ -35,6 +38,7 @@ public class AccesoController implements ActionListener {
     
     public AccesoController() {
         this.objDAO = new DAOManager().getAccesoDAO();
+        this.empDAO = new DAOManager().getEmpleadoDAO();
         this.objVista = new AccesoView();
         
         this.objVista.setVisible(true);
@@ -52,9 +56,12 @@ public class AccesoController implements ActionListener {
         try {
             unObj = getAcceso();
             if(objDAO.alreadyExisting(unObj)){
-                //System.out.println(unObj);
+                unObj = objDAO.readByID(unObj);
+                Empleado emp = empDAO.readByID(unObj.getFK_Empleado());
                 objVista.dispose();
-                MainView main = new MainView();
+                System.out.println(unObj);
+                System.out.println(emp);
+                MainView main = new MainView(emp);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectos...\nVuelve a intentarlo!!!");
                 user.setText("");
